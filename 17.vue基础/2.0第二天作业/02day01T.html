@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDos</title>
+    <!---   2CSS -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <!--
+  - 当在输入框中输入完内容的按回车键 当前内容展示到页面上  
+  - 点击三角 实现全选和全不选功能
+  - 点击叉号实现删除功能
+  - 双击标题实现编辑功能
+  - 如 点击   SECTION 1   则 内容区域显示 对应 SECTION 1 的内容  同时当前 SECTION的字体颜色变成蓝色 
+
+- ### 训练目标 -->
+    <!-- HTML   -->
+    <!-- - 1、 把数据渲染到页面上
+  - 根据completeed 的状态动态给li 绑定类名  
+    - 未完成状态：不需要样式        完成状态： 类名为 completed      编辑状态：类名为 editing
+    - 如果completed 为 true 则给当前li 添加  completed      
+- 2、把类名是  new-todo 按回车键的时候  把输入框中的数据展示到页面上
+  - 1. 获取文本框中用户输入的数据
+  - 2. 判断数据是否非空   如果是空的，则什么都不做    如果不是空的，则添加到数组中
+  - 3. 添加到数组中
+  - 4. 清空文本框
+- 3、  实现全选功能 
+  - 3.1 当点击三角即类名为 toggle-all  的复选框的时候 
+    - 如果当前三角高亮  即 复选框为选中状态  让当前所有的li 为 完成状态
+      - 通过双向绑定获取当前复选框的选中状态 
+    - 否则为未完成状态 
+  - 3.2  当点击单个li 里面的复选框的时候 如果当前复选框选中  则当前的状态为完成状态
+    - 通过双向绑定获取当前复选框选中状态  通过选中状态动态改变  completed 的值  
+  - 3.3  如果当前所有的li 都处于完成状态 即 复选框都选中 则上面的  toggle-all  复选框选中 有一个没有选中则当前toggle-all  复选框  处于未选中状态
+- 4、实现删除功能
+  - 给类名是 destroy  的按钮添加点击事件
+  - 点击当前按钮 删除当前按钮所在的 li  
+- 5 实现编辑功能
+  - 5.1 双击标题的时候 当前li 的类名添加   editing
+    - 5.1.1 给当前标题添加双击事件  
+    - 5.1.2 给当前li 添加editing  添加editing后 当前隐藏的输入框会显示出来
+  - 5.2 输入框的默认值为当前标题
+  - 5.3  当用户没有编辑 的时候 按esc退出的时候 数据不发生变化
+  - 5.4  当用户输入内容按回车键的时候  把标题更新 
+  - 5.5当用户失去焦点的 时候  把输入框中的标题更新 
+- 6  Clear completed
+  - 点击Clear completed  的时候删除所有的  已完成项
+- 7  number   item left
+  - 通过计算属性检测当前complete未完成的状态 -->
+
+    ​
+    <section id="todoapp" class="todoapp">
+        <header class="header">
+            <h1>todos</h1>
+            <input placeholder="What needs to be done?" class="new-todo" @keyup.enter="getValue" v-model="todo">
+        </header>
+        <section class="main">
+            <input id="toggle-all" type="checkbox" class="toggle-all" v-model="toggleStat">
+            <label for="toggle-all">Mark all as complete</label>
+            <ul class="todo-list">
+                <!-- 判断是否完成来实现类名的绑定 -->
+                <li :class="{completed:item.completed?'completed':'',editing:item.id == currentEditing?'editing':''}" :key="item.id" v-for="item in todos">
+                    <div class="view">
+                        <input type="checkbox" class="toggle" v-model="item.completed">
+                        <label @dblclick="edit(item.title,item.id)">{{item.title}}</label>
+                        <button class="destroy" @click="del(item.id)"></button>
+                    </div>
+                    <input class="edit" @keyup="titleDeal(item.id,$event)" @blur="titleDeal1(item.id)" v-model="editValue">
+                </li>
+            </ul>
+        </section>
+        <footer class="footer">
+            <span class="todo-count">
+            <strong>{{leftItem}}</strong> item left</span>
+            <ul class="filters">
+                <li><a href="#/" class="selected">All</a></li>
+                <li><a href="#/active">Active</a></li>
+                <li><a href="#/completed">Completed</a></li>
+            </ul>
+            <button class="clear-completed" @click="delSelect">Clear completed</button>
+        </footer>
+    </section>
+    <!---   3、 提供的数据  -->
+    <script src="../js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#todoapp",
+            data: {
+                // 当前被修改的值
+                editValue: "",
+                // 当前需要编辑的文本框下标
+                currentEditing: 0,
+                // 输入需要新添加的值
+                todo: "",
+                // 数据
+                todos: [{
+                    id: 1,
+                    title: '吃饭',
+                    // 小li的复选框,是否完成本事件也用这个
+                    completed: false,
+                }, {
+                    id: 2,
+                    title: '睡觉',
+                    completed: false,
+                }, {
+                    id: 3,
+                    title: '打豆豆',
+                    completed: true,
+                }, {
+                    id: 4,
+                    title: '打屁股',
+                    completed: false,
+                }]
+            },
+            methods: {
+                // 键盘按下回车则可以将数据添加到页面
+                getValue: function(event) {
+                    let value = event.target.value.trim();
+                    if (!value.length) {
+                        alert("添加值不能为空")
+                    } else {
+                        let dos = {};
+                        // 将表单的值获取放入一个对象中
+                        dos.title = this.todo;
+                        // 刚添加的事件肯定是未完成
+                        dos.completed = false;
+                        // id依次递增
+                        dos.id = this.todos.length ? this.todos[this.todos.length - 1].id + 1 : 1;
+                        // 将数据存入数组，动态渲染
+                        this.todos.push(dos);
+                        // 清空表单内容
+                        this.todo = "";
+                    }
+                },
+                // 单击删除
+                del: function(id) {
+                    // 返回当前与寻找的id不相同的数组项
+                    this.todos = this.todos.filter(item => item.id != id);
+                },
+                // 删除选中的项
+                delSelect: function() {
+                    // 返回当前为false
+                    this.todos = this.todos.filter(item => !item.completed);
+                },
+                // 出现需要编辑的文本框
+                edit: function(name, id) {
+                    this.currentEditing = id;
+                    this.editValue = name;
+                },
+                // 处理文本框内容
+                titleDeal: function(id, event) {
+                    if (event.keyCode === 27) {
+                        this.currentEditing = 0;
+                    } else if (event.keyCode === 13) {
+                        this.todos.some(item => {
+                            if (item.id == id) {
+                                item.title = event.target.value;
+                            }
+                            return true;
+                        });
+                        this.currentEditing = 0;
+                    }
+                },
+                // 焦点失去后的处理
+                titleDeal1: function(id) {
+                    this.todos.some(item => {
+                        if (item.id == id) {
+                            item.title = event.target.value;
+                        }
+                        return true;
+                    });
+                    this.currentEditing = 0;
+                }
+            },
+            computed: {
+                // 当全选被选中之时，所有小li都会被选中
+                toggleStat: {
+                    get() {
+                        // 判断反选
+                        return this.todos.every(item => item.completed);
+                    },
+                    // 这个val是toggleStat变化的值
+                    set(val) {
+                        // 全选，全不选
+                        this.todos.forEach(todo => todo.completed = val);
+                    }
+                },
+                // 左边栏目的个数，complete未完成的状态
+                leftItem: function() {
+                    return (this.todos.filter(todo => !todo.completed)).length;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

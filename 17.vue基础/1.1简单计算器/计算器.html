@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单计算器</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <!-- v-model为双向绑定数据，只可以用于表单，文本框等 -->
+            第一个数：<input type="text" v-model="a">
+        </div>
+        <div>
+            第二个数：<input type="text" v-model="b">
+        </div>
+        <div>
+            <!-- v-text用于插入值，v-html也是插入html语句 -->
+            <button v-on:click="getResult">相加</button> 结果为：<span v-text="result"></span>
+        </div>
+    </div>
+</body>
+<!-- 导入vue框架 -->
+<script src="../js/vue.js"></script>
+<script>
+    var vue = new Vue({
+        // el为相应信息的挂载点
+        el: "#app",
+        // data为数据相关信息
+        data: {
+            a: "",
+            b: "",
+            result: ""
+        },
+        // 方法存放的地方
+        methods: {
+            getResult: function() {
+                this.result = parseInt(this.a) + parseInt(this.b);
+            }
+        }
+    })
+</script>
+
+</html>

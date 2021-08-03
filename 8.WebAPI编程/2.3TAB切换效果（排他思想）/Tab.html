@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tab切换效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        li {
+            list-style-type: none;
+        }
+        
+        .tab {
+            width: 978px;
+            margin: 100px auto;
+        }
+        
+        .tab_list {
+            height: 39px;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+        
+        .tab_list li {
+            float: left;
+            height: 39px;
+            line-height: 39px;
+            padding: 0 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .tab_list .current {
+            background-color: #c81623;
+            color: #fff;
+        }
+        
+        .item_info {
+            padding: 20px 0 0 20px;
+        }
+        
+        .item {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab">
+        <div class="tab_list">
+            <ul>
+                <li class="current">商品介绍</li>
+                <li>规格与包装</li>
+                <li>售后保障</li>
+                <li>商品评价（50000）</li>
+                <li>手机社区</li>
+            </ul>
+        </div>
+        <div class="tab_con">
+            <div class="item" style="display: block;">
+                商品介绍模块内容
+            </div>
+            <div class="item">
+                规格与包装模块内容
+            </div>
+            <div class="item">
+                售后保障模块内容
+            </div>
+            <div class="item">
+                商品评价（50000）模块内容
+            </div>
+            <div class="item">
+                手机社区模块内容
+            </div>
+        </div>
+    </div>
+    <script>
+        var table_list = document.getElementsByClassName("tab_list");
+        var table_lists = table_list[0].getElementsByTagName("li");
+        var table_con = document.getElementsByClassName("tab_con");
+        var table_cons = table_con[0].getElementsByClassName("item");
+        for (var i = 0; i < table_lists.length; i++) {
+            // 通过设置自定义属性获取编号
+            table_lists[i].setAttribute("index", i);
+            table_lists[i].onclick = function() {
+                //先清空样式，在赋值样式
+                for (var j = 0; j < table_lists.length; j++) {
+                    table_lists[j].className = "";
+                }
+                this.className = "current";
+                //获取点击的编号
+                var index = this.getAttribute("index");
+                for (var j = 0; j < table_cons.length; j++) {
+                    table_cons[j].style.display = "none";
+                }
+                // 根据编号进行同步显示对应内容
+                table_cons[index].style.display = "block";
+            }
+        }
+    </script>
+</body>
+
+</html>

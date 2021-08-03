@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        select {
+            width: 200px;
+            height: 300px;
+            font-size: 22px;
+            background-color: #80ff45;
+        }
+    </style>
+    <script src="../jQuery3.60/jquery.min.js"></script>
+    <script>
+        $(function() {
+            // 首先是一个一个的移动：左移选中
+            $("button").eq(2).on("click", function() {
+                // 每次点击时，左边被选中的移到右边
+                // 先给每个选中的在右边的盒子创建一个新选项
+                // each函数可以实现不同的操作
+                // console.log($("option:checked"));
+                $("#sel1").find("option:checked").each(function(index, ele) {
+                    var op = $("<option value=''></option>");
+                    // 然后文本内容也复制
+                    op.text($(ele).text());
+                    // 然后加入到sel2中
+                    // console.log(op);
+                    $("#sel2").append(op);
+                    // 原sel1中的消失
+                    $(this).remove();
+                })
+            });
+            // 首先是一个一个的移动：右移选中
+            $("button").eq(3).on("click", function() {
+                // 每次点击时，右边被选中的移到左边
+                // 先给每个选中的在右边的盒子创建一个新选项
+                // each函数可以实现不同的操作
+                $("#sel2").find("option:checked").each(function(index, ele) {
+                    var op = $("<option value=''></option>");
+                    // 然后文本内容也复制
+                    op.text($(ele).text());
+                    // 然后加入到sel2中
+                    $("#sel1").append(op);
+                    // 原sel2中的消失
+                    $(this).remove();
+                })
+            });
+            // 然后是全移动
+            // 左移
+            $("button").eq(0).on("click", function() {
+                // 每次点击时，左边被选中的移到右边
+                // 先给每个选中的在右边的盒子创建一个新选项
+                // each函数可以实现不同的操作
+                $("#sel1").find("option").each(function(index, ele) {
+                    var op = $("<option value=''></option>");
+                    // 然后文本内容也复制
+                    op.text($(ele).text());
+                    // 然后加入到sel2中
+                    $("#sel2").append(op);
+                    // 原sel1中的消失
+                    $(this).remove();
+                })
+            });
+            // 右移
+            $("button").eq(1).on("click", function() {
+                // 每次点击时，左边被选中的移到右边
+                // 先给每个选中的在右边的盒子创建一个新选项
+                // each函数可以实现不同的操作
+                $("#sel2").find("option").each(function(index, ele) {
+                    var op = $("<option value=''></option>");
+                    // 然后文本内容也复制
+                    op.text($(ele).text());
+                    // 然后加入到sel2中
+                    $("#sel1").append(op);
+                    // 原sel2中的消失
+                    $(this).remove();
+                })
+            });
+            // 以下为简便写法
+            //  //以前我们要一把一把操作需要借助for循环;有了jQuery之后，就不用for循环;
+            // //需求1：点击前两个按钮，一侧的所有option移动到另一侧的select标签中;
+            // $("button").eq(0).click(function () {
+            //     //左侧所有option全部移动到右侧select中(不用for循环)
+            //     $("#sel2").append($("#sel1>option"));
+            // });
+            // $("button").eq(1).click(function () {
+            //     //右侧所有option全部移动到左侧select中(不用for循环)
+            //     $("#sel1").append($("#sel2>option"));
+            // });
+
+            // //需求2：点击后两个按钮，一侧的所有option中"被选中"的全部移动到另一侧的select标签中;
+            //         //(:selected)
+            // $("button").eq(2).click(function () {
+            //     //左侧所有option全部移动到右侧select中(不用for循环)
+            //     $("#sel2").append($("#sel1>option:selected"));
+            // });
+            // $("button").eq(3).click(function () {
+            //     //右侧所有option全部移动到左侧select中(不用for循环)
+            //     $("#sel1").append($("#sel2>option:selected"));
+            // });
+
+
+            //优化封装;
+            //            function fn(str1,str2) {
+            //                //右侧所有option全部移动到左侧select中(不用for循环)
+            //                $(str1).append($(str2));
+            //            }
+        })
+    </script>
+</head>
+
+<body>
+
+    <select name="" id="sel1" size="4" multiple>
+        <option value="">香蕉</option>
+        <option value="">大鸭梨</option>
+        <option value="">苹果</option>
+        <option value="">大西瓜</option>
+    </select>
+
+    <button>&gt;&gt;&gt;</button>
+    <button>&lt;&lt;&lt;</button>
+    <button>&gt;</button>
+    <button>&lt;</button>
+
+    <select name="" id="sel2" size="4" multiple></select>
+
+
+
+
+</body>
+
+</html>

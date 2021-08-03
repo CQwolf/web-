@@ -1,0 +1,8 @@
+model：数据库操作
+public：静态资源
+route：路由模块
+views：模板
+app.js：程序入口
+package.json：本项目的文件详情
+node_modules：依赖的开发和运行的第三方模块
+package-lock.json：本项目依赖的开发和运行的第三方模块的文件详情

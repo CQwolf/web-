@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>简单导航栏</title>
+	<style type="text/css">
+		/* 1. 变换模式 有大小 a为内联元素 需要转换大小 a标签需要指向a标签才能更改a标签的格式*/
+		a {
+			display: inline-block;
+			width: 100px;
+			height: 30px;
+			background-color: pink;
+			text-align: center;
+			text-decoration: none;
+			color: #fff;
+			/* 行高等于盒子高度,文字垂直居中 大于,则文字偏下 小于,则文字偏上 */
+			line-height: 30px;
+		}
+		/* 2. 经过鼠标经过 文字和底色变换颜色 */
+		a:hover {
+			background-color: orange;
+			color: yellow;
+		}
+	</style>
+</head>
+<body>
+	<a href="#">新闻</a>
+	<a href="#">体育</a>
+	<a href="#">汽车</a>
+	<a href="#">好用</a>
+</body>
+</html>

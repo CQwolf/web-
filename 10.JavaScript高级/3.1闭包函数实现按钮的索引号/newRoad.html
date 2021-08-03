@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包函数实现点击获取索引号</title>
+    <style>
+        .nav li {
+            list-style-type: none;
+            cursor: pointer;
+            height: 30px;
+            background-color: brown;
+        }
+        
+        .nav li:hover {
+            background-color: chartreuse;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="nav">
+        <li>熊大</li>
+        <li>熊二</li>
+        <li>光头强</li>
+        <li>一拳超人</li>
+    </ul>
+    <p class="displayIndex">显示点击的索引号</p>
+    <p class="out">定时器输出</p>
+    <script>
+        // 获取元素
+        var ul = document.querySelector(".nav");
+        var lis = ul.querySelectorAll("li");
+        var disIndex = document.querySelector(".displayIndex");
+        var out = document.querySelector(".out");
+        // 1.循环绑定点击事件
+        // for (var i = 0; i < lis.length; i++) {
+        //     // 获取属性通过自定义属性实现
+        //     lis[i].index = i;
+        //     lis[i].onclick = function() {
+        //         // 通过this来进行获取当前的索引号
+        //         disIndex.innerHTML = "点前点击索引号为：" + this.index;
+        //     }
+        // }
+        // 2.利用闭包函数来做
+        // 需要用到一个立即执行函数function(){}()实现，因为立即执行函数称为小闭包
+        // 闭包：一个作用域访问另一个函数的局部变量的函数，被访问局部变量的函数为闭包函数
+        // 同样是循环绑定事件
+        for (var i = 0; i < lis.length; i++) {
+            // 通过立即执行函数实现
+            (function(i) { //这个立即执行函数为闭包函数
+                lis[i].onclick = function() {
+                    // 通过this来进行获取当前的索引号
+                    // 闭包的另一作用是延续局部变量的作用域
+                    // 当点击函数执行后才释放变量所申请空间
+                    disIndex.innerHTML = "点前点击索引号为：" + i;
+                }
+            }(i)); //此刻的i由循环传递给前面的i,然后到达函数里面的i
+        }
+        // 第二个循环3秒定时器输出ul里面的文字信息
+        for (var i = 0; i < lis.length; i++) {
+            // 同理利用立即执行函数实现小闭包
+            // for循环是同步任务，如果不使用立即执行函数，setTimeout为异步任务，会导致i结束，而异步任务才开始
+            (function(i) {
+                setTimeout(function() {
+                    // 一样将i的值存储起来,三秒后进行输出
+                    out.innerHTML += "<br />" + lis[i].innerText;
+                }, 3000);
+            }(i));
+        }
+    </script>
+</body>
+
+</html>

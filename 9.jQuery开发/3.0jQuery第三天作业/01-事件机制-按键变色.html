@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .wrap {
+            width: 400px;
+            height: 400px;
+            margin: 100px auto 0;
+        }
+        
+        .wrap h1 {
+            text-align: center;
+        }
+        
+        .wrap div {
+            width: 400px;
+            height: 300px;
+            background: pink;
+            font-size: 30px;
+            text-align: center;
+            line-height: 300px;
+        }
+    </style>
+    <script src="../jQuery3.60/jquery.min.js"></script>
+    <script>
+        $(function() {
+            $(document).on("keydown", function(event) {
+                // 1.按下相应的按键给出键值
+                var userKeyCode = event.keyCode;
+                // var inner = "keyCode为：" + userKeyCode + "<span id='keyCodeSpan'></span>";
+                $("#keyCodeSpan").text(userKeyCode);
+                // 2.并且将盒子颜色进行改变
+                userKeyCode = userKeyCode > 10 ? "0" + userKeyCode : "00" + userKeyCode;
+                $("#bgChange").css("background-color", "#" + userKeyCode);
+            })
+        })
+    </script>
+</head>
+
+<body>
+
+    <div class="wrap">
+        <h1>按键改变颜色</h1>
+        <div id="bgChange">
+            keyCode为：
+            <span id="keyCodeSpan"></span>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        body {
+            height: 300px;
+            /* clear: both; */
+        }
+        
+        .a {
+            float: left;
+            width: 100px;
+            /* height: 100px; */
+            background-color: #876;
+            opacity: 1;
+        }
+        /* 清除页面的浮动效果 */
+        
+        .c {
+            clear: both;
+        }
+        
+        .clearfix:before,
+        .clearfix:after {
+            content: "";
+            display: table;
+        }
+        
+        .clearfix:after {
+            clear: both;
+        }
+        /* IE-6,7专门声明 */
+        
+        .clearfix {
+            *zoom: 1;
+        }
+        
+        .b {
+            display: block;
+            width: 400px;
+            height: 150px;
+            background-color: #098;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="c">
+        <div class="a">67<br><br><br><br><br><br><br><br><br><br><br>78</div>
+    </div>
+    <div class="b"><a href="">你好</a></div>
+</body>
+
+</html>

@@ -1,0 +1,4 @@
+default.json 文件是用于储存默认的配置
+development.json 文件用于储存开发环境下的配置
+production.json 文件用于储存生产环境下的配置
+custom-environment-variable.json 文件用于存储敏感的配置信息

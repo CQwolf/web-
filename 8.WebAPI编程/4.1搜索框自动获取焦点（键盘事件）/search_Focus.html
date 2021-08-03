@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索框按下s键获取焦点</title>
+    <style>
+        h1 {
+            color: red;
+        }
+        
+        input {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>按下回车键使搜索框获得焦点</h1>
+    <span>请输入：</span><input type="text" placeholder="点击回车聚焦到这个框">
+    <script>
+        var search = document.querySelector("input");
+        document.addEventListener("keyup", function(e) {
+            if (e.keyCode === 13) {
+                search.focus();
+            }
+        })
+    </script>
+</body>
+
+</html>

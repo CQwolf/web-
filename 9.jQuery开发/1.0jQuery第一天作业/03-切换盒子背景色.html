@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        button {
+            width: 100px;
+            height: 50px;
+            font-size: 22px;
+        }
+        
+        div {
+            width: 300px;
+            height: 300px;
+            margin: 30px 0;
+            background-color: skyblue;
+        }
+        
+        .current {
+            background-color: yellowgreen !important;
+        }
+    </style>
+    <script src="../jQuery3.60/jquery.min.js"></script>
+    <script>
+        $(function() {
+            // 1.多按钮切换
+            // 点击第二个按钮变成yellowgreen
+            $("button").eq(0).on("click", function() {
+                $("div").css("background-color", "red")
+            });
+            // 点击第二个按钮变成yellowgreen
+            $("button").eq(1).on("click", function() {
+                $("div").css("background-color", "yellowgreen")
+            });
+            // 点击第三个按钮变成skyblue
+            $("button").eq(2).on("click", function() {
+                $("div").css("background-color", "skyblue")
+            });
+            // 利用each函数实现简单写法
+            // var colors = ["red", "yellowgreen", "skyblue"];
+            // $("button").each(function(index, ele) {
+            //     $(ele).on("click", function() {
+            //         $("div").css("background-color", colors[index]);
+            //     }).css("background-color", colors[index]);
+            // });
+            // 2.单按钮切换双色
+            // 2.1颜色判断法
+            // $(".radio").on("click", function() {
+            //     if ($("div").css("background-color") === "rgb(135, 206, 235)") {
+            //         $("div").css("background-color", "yellowgreen");
+            //     } else {
+            //         $("div").css("background-color", "skyblue");
+            //     }
+            // });
+            // 2.2判断类法
+            // $(".radio").on("click", function() {
+            //     if ($("div").hasClass("current")) {
+            //         $("div").removeClass("current");
+            //     } else {
+            //         $("div").addClass("current");
+            //     }
+            // });
+            // 2.3toggleClass方法实现
+            $(".radio").on("click", function() {
+                $("div").toggleClass("current");
+            });
+        })
+    </script>
+</head>
+
+<body>
+    <button>切换1</button>
+    <button>切换2</button>
+    <button>切换3</button>
+    <button class="radio">切换</button>
+    <div>
+        牡丹虽好空入目，枣花最小结实诚;
+    </div>
+</body>
+
+</html>

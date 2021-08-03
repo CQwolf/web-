@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构造函数</title>
+    <script>
+        // 创建构造函数
+        // 王者荣耀英雄的构造函数
+        function hero(name, type, blood, attack) {
+            this.name = name;
+            this.blood = blood;
+            this.type = type;
+            this.attack = function() {
+                console.log(attack)
+            }
+        }
+        // 创建实例廉颇
+        var lianpo = new hero('廉颇', '力量型', 500, '近战');
+        // 创建一个实例为后羿
+        var houyi = new hero('后羿', '射手型', 100, '远程');
+        console.log(lianpo.name, lianpo.type, lianpo.type);
+        lianpo.attack();
+        console.log(houyi.name, houyi.type, houyi.type);
+        houyi.attack();
+        //for in 循环输出对象或者数组，实现遍历
+        for (var key in lianpo) {
+            console.log(key);
+            console.log(lianpo[key]);
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>倒计时</title>
+    <style>
+        div {
+            margin: 200px;
+        }
+        
+        div span {
+            width: 45px;
+            height: 45px;
+            text-align: center;
+            line-height: 45px;
+            background: #333;
+            color: white;
+            display: inline-block;
+            font-size: 16px;
+        }
+        
+        h3 {
+            color: red;
+            font-weight: 400;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h3></h3>
+        <span class="day">0天</span>
+        <span class="hour">0</span>
+        <span class="munite">0</span>
+        <span class="second">0</span>
+    </div>
+    <script>
+        var day = document.querySelector(".day");
+        var hour = document.querySelector(".hour");
+        var munite = document.querySelector(".munite");
+        var second = document.querySelector(".second");
+        var h3 = document.querySelector("h3");
+        // 获取用户指定的时间
+        var time = "2021-3-30 22:00:00";
+        var userTime = new Date(time);
+        getTimer();
+        setInterval(getTimer, 1000);
+
+        function getTimer() {
+            // 提示信息
+            h3.innerHTML = "距离" + time + "还剩";
+            // 获取当前的时间(ms为单位)
+            var nowTime = new Date();
+            // 获取剩余的时间(s为单位)
+            var leftTime = (userTime - nowTime) / 1000;
+            // 获取天数
+            var d = parseInt(leftTime / 3600 / 24);
+            d = d >= 10 ? d : "0" + d;
+            day.innerHTML = d + "天";
+            // 获取小时
+            var h = parseInt(leftTime / 3600 % 24);
+            h = h >= 10 ? h : "0" + h;
+            hour.innerHTML = h;
+            // 获取分钟
+            var m = parseInt(leftTime / 60 % 60);
+            m = m >= 10 ? m : "0" + m;
+            munite.innerHTML = m;
+            // 获取秒数
+            var s = parseInt(leftTime % 60);
+            s = s >= 10 ? s : "0" + s;
+            second.innerHTML = s;
+        };
+    </script>
+</body>
+
+</html>

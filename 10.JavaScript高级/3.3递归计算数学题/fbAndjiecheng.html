@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算斐波列函数和阶乘（递归）</title>
+</head>
+
+<body>
+    <script>
+        // 计算阶乘分解为n * (n-1)!,(n-1)!分解为n-1 * (n-2)!,以此类推
+        function getNum(n) {
+            // 当 n == 1时，阶乘为1
+            if (n == 1) {
+                return 1;
+            }
+            return n * getNum(n - 1);
+        }
+        document.writeln("阶乘为：" + getNum(15) + "<br/>");
+        // 斐波列函数的后一项为前两项相加
+        // 即是：第n项为n-1项加n-2项
+        function feiBo(n) {
+            if (n == 1 || n == 2) {
+                return 1;
+            }
+            return feiBo(n - 1) + feiBo(n - 2);
+        }
+        document.writeln("斐波列函数第15项为：" + feiBo(15));
+    </script>
+</body>
+
+</html>

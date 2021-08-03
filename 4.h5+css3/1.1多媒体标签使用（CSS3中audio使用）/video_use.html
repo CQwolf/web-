@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>video使用</title>
+</head>
+
+<body>
+    <!-- controls 显示音频控件 autopaly 自动播放 loop 循环播放
+    谷歌浏览器禁用 autopaly 不允许自动播放 -->
+    <audio src="music/snow.mp3" controls="controls" autoplay="autoplay"></audio>
+    <!-- 因为不同浏览器支持不同的格式，所以我们采取准备多个格式 -->
+    <audio controls="controls">
+        <source src="music/snow.mp3" type="audio/mpeg">
+        <source src="music/snow.ogg" type="audio/ogg">
+    </audio>
+</body>
+
+</html>

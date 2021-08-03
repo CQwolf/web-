@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+        
+        ul {
+            list-style: none
+        }
+        
+        .box {
+            width: 600px;
+            margin: 100px auto;
+            border: 1px solid #000;
+            padding: 20px;
+        }
+        
+        textarea {
+            width: 450px;
+            height: 160px;
+            outline: none;
+            resize: none;
+        }
+        
+        ul {
+            width: 450px;
+            padding-left: 80px;
+        }
+        
+        ul li {
+            line-height: 25px;
+            border-bottom: 1px dashed #cccccc;
+            display: none;
+        }
+        
+        input {
+            float: right;
+        }
+        
+        ul li a {
+            color: red;
+            cursor: pointer;
+            float: right;
+        }
+    </style>
+    <script src="../jQuery3.60/jquery.min.js"></script>
+    <script>
+        $(function() {
+            // 首先通过大文本框的值获取内容，放到新创建的小li,然后实现大文本框清空
+            // 用 on 可以动态绑定事件，即便是最新创建的
+            $(".btn").on("click", function() {
+                // 获取大文本框内容，创建一个li
+                var li = $("<li></li>");
+                li.html($(".txt").val() + "<a herf='javascript:;'> 删除</a>");
+                // 最近添加的评论在最上面
+                $("ul").prepend(li);
+                // 清空原文本框
+                $(".txt").val("");
+                // 因为原来的li是全隐藏的所以利用淡入函数进入
+                li.slideDown();
+            });
+            // 可以通过删除按钮删除此条评论，需要使用on来实现动态绑定
+            $("ul").on("click", "li a", function() {
+                // 先上滑，在移除这个li
+                // 这里的回调函数用于等待slideUp动画执行完了以后才去删除
+                $(this).parent().slideUp(function() {
+                    // 由于外层已经指向li,所以下面用this即可
+                    $(this).remove();
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="box" id="weibo">
+        <span>微博发布</span>
+        <textarea name="" class="txt" cols="30" rows="10"></textarea>
+        <button class="btn">发布</button>
+        <ul>
+        </ul>
+    </div>
+</body>
+
+</html>

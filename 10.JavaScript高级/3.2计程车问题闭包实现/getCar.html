@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计程车闭包问题写法</title>
+</head>
+
+<body>
+    <script>
+        // 返回的为一个对象，所以需要对象调用函数
+        var car = function() {
+            // 声明起步价，总价格
+            var start = 13;
+            var price = 0;
+            return {
+                normalPrice: function(len) {
+                    // 判断是否超过三公里的价格
+                    if (len <= 3) {
+                        price = start;
+                    } else {
+                        price = start + (len - 3) * 10;
+                    }
+                    return price;
+                },
+                // 是否堵车，堵车多收15
+                crowdPrice: function(flag) {
+                    return flag ? price + 15 : price;
+                }
+            }
+        }
+
+        // 此时， 函数normalPrice， crowdPrice使用了car的局部变量，car为闭包函数
+        // 闭包函数内部返回值一般为函数或者包含函数的对象，且函数里面使用了闭包函数的局部变量
+        // 调用函数,获取对象
+        var car1 = car();
+        // 不堵车
+        document.writeln(car1.normalPrice(7));
+        // 堵车
+        document.writeln(car1.crowdPrice(7));
+    </script>
+</body>
+
+</html>

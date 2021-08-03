@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM</title>
+    <script>
+        var command = prompt('请输入您要的操作：\n' + '1.存钱\n' + '2.取钱\n' + '3.显示余额\n' + '4.退出');
+        var MoneyOfCash = 2000;
+        var out = 0;
+        var store = 0;
+        while (true) {
+            command = parseInt(prompt('请输入您要的操作：\n' + '1.存钱\n' + '2.取钱\n' + '3.显示余额\n' + '4.退出'));
+            if (command == 1) {
+                store = parseInt(prompt("请输入您需要存钱的金额"));
+                MoneyOfCash += store;
+                alert("您的余额为：" + MoneyOfCash);
+            }
+            if (command == 2) {
+                out = parseInt(prompt("请输入您需要取钱的金额"));
+                if (MoneyOfCash < out) {
+                    alert("余额不足");
+                } else {
+                    MoneyOfCash -= out;
+                    alert("您的余额为：" + MoneyOfCash);
+                }
+            }
+            if (command == 3) {
+                alert("您的余额为：" + MoneyOfCash);
+            }
+            if (command == 4) {
+                alert("谢谢使用，再见")
+                break;
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

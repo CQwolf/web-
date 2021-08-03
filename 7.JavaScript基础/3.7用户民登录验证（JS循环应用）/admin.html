@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户名登录</title>
+    <script>
+        var admin = prompt('请输入用户名：');
+        var password = prompt('请输入密码：');
+        do {
+            if (admin == 'admin' && password == '123456') {
+                alert('登陆成功！欢迎你' + admin);
+                break;
+            } else if (admin != 'admin')
+                alert('用户名输入错误！请重试！');
+            else if (password != '123456')
+                alert('密码输入错误！请重试！');
+            admin = prompt('请输入用户名：');
+            password = prompt('请输入密码：');
+        } while (true)
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

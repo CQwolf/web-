@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试jQuery导入是否成功</title>
+    <!-- 导入jQuery3.60版本 -->
+    <script src="../jQuery3.60/jquery.min.js"></script>
+    <style>
+        div {
+            width: 200px;
+            height: 300px;
+            background-color: #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        // 等于DomContentLoad函数
+        // 当DOM页面加载内容之后执行JS
+        // 不常用
+        $(document).ready(function() {
+            $("div").hide();
+        });
+        // 常用
+        // $(function() {
+        //     $("div").hide();
+        // });
+    </script>
+    <div></div>
+</body>
+
+</html>

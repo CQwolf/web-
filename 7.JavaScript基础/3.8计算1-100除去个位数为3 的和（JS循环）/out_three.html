@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>去除个位数为3的和</title>
+    <script>
+        var SumOutTre = 0;
+        var i = 1;
+        do {
+            SumOutTre += i;
+            if (i % 10 == 3) {
+                console.log(i + '\n')
+                continue;
+            }
+        } while (i++ <= 100)
+        console.log('去除个位数为3的数字，总和为：' + SumOutTre);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

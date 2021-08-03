@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>相同位置寻找</title>
+</head>
+
+<body>
+    <script>
+        var str1 = ['a', 'e', 'h', 'g', 'a', 'h', 'k', 'l', 'a', ',', 'f', 'a', 'o', 'a', 'k', 'e'];
+        var temp = str1.indexOf('a');
+        var si = 'usnuxsuxnsuwssuxs';
+
+
+        function SearchPosition(arr) {
+            var str2 = [];
+
+            for (var i = 0; i < arr.length; i++) {
+                if (temp === -1)
+                    break;
+                str2.push(temp);
+                temp = arr.indexOf('a', temp + 1);
+            }
+            return str2;
+        }
+        console.log(SearchPosition(str1));
+        console.log(si.charAt(si.indexOf('u')));
+    </script>
+</body>
+
+</html>

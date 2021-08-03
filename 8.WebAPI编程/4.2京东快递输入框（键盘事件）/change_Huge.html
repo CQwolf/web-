@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>变大输入框内容</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1 {
+            color: red;
+        }
+        
+        .counter {
+            margin-top: 100px;
+            margin-left: 100px;
+            position: relative;
+        }
+        
+        .con {
+            display: none;
+            position: absolute;
+            font-size: 20px;
+            background: #fff;
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            border: 1px solid rgba(0, 0, 0, .2);
+            top: -48px;
+            left: 128px;
+            color: #333;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+        }
+        
+        .con::before {
+            content: "";
+            width: 0;
+            height: 0;
+            position: absolute;
+            border: 8px solid #fff;
+            border-color: #fff transparent transparent transparent;
+            top: 40px;
+            left: 10px;
+        }
+        
+        input {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>输入单号显示大数字</h1>
+    <div class="counter">
+        <div class="con">nihao </div>
+        <span>请输入快递单号：</span><input type="text" placeholder="请输入快递单号">
+    </div>
+    <script>
+        var con = document.querySelector(".con");
+        var input = document.querySelector("input");
+        input.addEventListener("keyup", function(e) {
+            if (input.value == "") {
+                con.style.display = "none";
+            } else {
+                con.style.display = "block";
+                con.innerHTML = this.value;
+            }
+        });
+        // 获得焦点就显示
+        input.addEventListener("focus", function() {
+            if (this.value != "")
+                con.style.display = "block";
+        });
+        // 失去焦点就隐藏
+        input.addEventListener("blur", function() {
+            con.style.display = "none";
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主页</title>
+</head>
+
+<body>
+    <h1>首页</h1>
+    <div id="user">欢迎您！！</div>
+    <script>
+        var username1 = location.search;
+        // 去掉问号
+        console.log(username1);
+        var prams = username1.substr(1);
+        var username = prams.split('=');
+        // document.write(username[1] + "欢迎登录");
+        var user = document.getElementById("user");
+        user.innerHTML = username[1] + user.innerText;
+    </script>
+</body>
+
+</html>

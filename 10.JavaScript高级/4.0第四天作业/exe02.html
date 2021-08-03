@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>提取邮箱号</title>
+</head>
+
+<body>
+    <!-- ## 2 - 邮箱提取
+
+- 题目描述
+
+  将字符串'小明：大神么么哒，正好是我想要的，我的邮箱是xiaoming@qq.com小红：我老公最爱看这个了，我想给他一个惊喜，么么么哒，邮箱是xiaohong@sina.com我：好人一生平安，邮箱是wuyou@163.com'中所有的邮箱号码提取出来
+
+- 训练目标
+
+  正则表达式的提取
+
+- 训练提示
+
+  ```js
+  match方法
+  邮箱验证:/\w+@\w+\.\w+/
+  ``` -->
+    <div class="tip">提示：将原下面语句中的邮箱号提取出来</div>
+    <div class="oldStr">
+        原字符串：小明：大神么么哒，正好是我想要的，我的邮箱是xiaoming@qq.com小红： 我老公最爱看这个了，我想给他一个惊喜，么么么哒，邮箱是xiaohong@sina.com我：好人一生平安，邮箱是wuyou@163.com
+    </div>
+    <div class="newStr"></div>
+    <script>
+        // 获取元素
+        var newStr = document.querySelector(".newStr");
+        // 使用replace方法进行正则表达式替换
+        var oldStr = "小明：大神么么哒，正好是我想要的，我的邮箱是xiaoming@qq.com小红：我老公最爱看这个了，我想给他一个惊喜，么么么哒，邮箱是xiaohong@sina.com我：好人一生平安，邮箱是wuyou@163.com";
+        // 匹配方式
+        var reg1 = /\w+@\w+\.\w+/g;
+        // match函数匹配所有的符合条件的转成数组
+        var emailStr = oldStr.match(reg1);
+        newStr.innerHTML = "获取的邮箱：" + emailStr;
+        console.log(emailStr);
+    </script>
+
+</body>
+
+</html>

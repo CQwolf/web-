@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .wrap {
+            width: 300px;
+            margin: 100px auto 0;
+        }
+        
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 1px solid #c0c0c0;
+        }
+        
+        th,
+        td {
+            border: 1px solid #d0d0d0;
+            color: #404060;
+            padding: 10px;
+        }
+        
+        th {
+            background-color: #09c;
+            font: bold 16px "微软雅黑";
+            color: #fff;
+        }
+        
+        td {
+            font: 14px "微软雅黑";
+        }
+        
+        tbody tr {
+            background-color: #f0f0f0;
+        }
+        
+        tbody tr:hover {
+            cursor: pointer;
+            background-color: #fafafa;
+        }
+    </style>
+    <script src="../jQuery3.60/jquery.min.js"></script>
+    <script>
+        $(function() {
+            // 第一步，当#j_cbAll为选中状态时，其余所有的复选框为选中状态
+            // 需要用到change事件，因为状态变化就判断一次
+            $("#j_cbAll").on("change", function() {
+                // tbody里面所有的input选中状态与thead一致
+                $("#j_tb").find("input").prop("checked", $(this).prop("checked"));
+            });
+            // 第二步，当所有tbody里面的所有input每次状态变化时，检测一次，若全部选中时，thead里面的input也需要选中
+            $("#j_tb").find("input").on("change", function() {
+                // if ($("#j_tb").find("input:checked").length == $("#j_tb").find("input").length) {
+                //     $("#j_cbAll").prop("checked", true);
+                // } else {
+                //     $("#j_cbAll").prop("checked", false);
+                // }
+                // 利用boolean变量
+                var bool = $("#j_tb").find("input:checked").length == $("#j_tb").find("input").length;
+                $("#j_cbAll").prop("checked", bool);
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <div class="wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" id="j_cbAll" />
+                    </th>
+                    <th>课程名称</th>
+                    <th>所属学院</th>
+                </tr>
+            </thead>
+            <tbody id="j_tb">
+                <tr>
+                    <td>
+                        <input type="checkbox" />
+                    </td>
+                    <td>JavaScript</td>
+                    <td>前端与移动开发学院</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" />
+                    </td>
+                    <td>css</td>
+                    <td>前端与移动开发学院</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" />
+                    </td>
+                    <td>html</td>
+                    <td>前端与移动开发学院</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" />
+                    </td>
+                    <td>jQuery</td>
+                    <td>前端与移动开发学院</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" /></td>
+                    <td>HTML5</td>
+                    <td>前端与移动开发学院</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" /></td>
+                    <td>CSS3</td>
+                    <td>前端与移动开发学院</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</body>
+
+</html>

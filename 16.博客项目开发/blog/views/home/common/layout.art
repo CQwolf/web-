@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <!--网页title和介绍部分-->
+    {{block "title"}}{{/block}}
+	<link rel="stylesheet" href="/home/css/base.css">
+    <!--其他外链资源-->
+	{{block "link"}}{{/block}}
+</head>
+<body>
+	<!--内容部分-->
+	{{block "main"}}{{/block}}
+	<!--自定义脚本部分-->
+    {{block "script"}}{{/block}}
+</body>
+</html>

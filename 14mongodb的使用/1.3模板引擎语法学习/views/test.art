@@ -1,0 +1,44 @@
+// 继承html的骨架，并填充内容
+{{extend "./model.art"}}
+
+    
+{{block "title"}}<title>测试代码</title>{{/block}}
+{{block "link"}}<link rel="stylesheet" href="./css/common.css"> {{/block}}
+// 填充到模块的body的内容中
+{{block "body"}}
+
+    // 把子模块包含进来
+    {{include "./head.art"}}
+     // 标准语法
+    {{ 123 }}
+    {{ "a" }}
+    {{ 1 + 1 == 2? "对":"不对"}}
+    // 变量若有html标签的文本
+    // 需要用@实现解析
+    {{ content }}
+    {{@ content }}
+    // 时间格式转换
+    {{ dateformat (date, "yyyy-MM-dd hh:mm:ss") }}
+    // 循环和判断语句
+    <ul>
+        {{ each user }}
+        <li>
+            {{ $value.name }}
+            {{ if $value.age >= 20}}
+                {{$value.age}}
+            {{ /if }}
+        </li>
+        {{ /each }}
+    </ul>
+    // 原始语法
+    <%= 123 %>
+    <%= "a" %>
+    <%= 1 + 1 == 2? "对":"不对" %>
+
+    // 变量若有html标签的文本
+    // 需要用-实现解析
+    <%= content %>
+    <%- content %>
+    // 把子模块包含进来
+    {{include "./foot.art"}}
+{{/block}}

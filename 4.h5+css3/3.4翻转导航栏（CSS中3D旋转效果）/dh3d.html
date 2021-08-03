@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导航栏效果</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul {
+            width: 1000px;
+            margin: 100px auto;
+        }
+        
+        ul li {
+            width: 150px;
+            height: 40px;
+            list-style-type: none;
+            perspective: 500px;
+        }
+        
+        .box {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: all 0.4s;
+        }
+        
+        .box:hover {
+            transform: rotateX(90deg);
+        }
+        
+        .fornt,
+        .bottom {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: 40px;
+            font-size: 24px;
+            color: #fff;
+        }
+        
+        .fornt {
+            background: #45d;
+            z-index: 1;
+            transform: translateZ(20px);
+        }
+        
+        .bottom {
+            background: #aaa;
+            /* 先移动后旋转 */
+            transform: translateY(20px) rotateX(-90deg);
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <div class="box">
+                <div class="fornt">你好</div>
+                <div class="bottom">再见</div>
+            </div>
+        </li>
+        <li>
+            <div class="box">
+                <div class="fornt">你是</div>
+                <div class="bottom">SB</div>
+            </div>
+        </li>
+        <li>
+            <div class="box">
+                <div class="fornt">夜袭</div>
+                <div class="bottom">寡妇村</div>
+            </div>
+        </li>
+        <li>
+            <div class="box">
+                <div class="fornt">二营长</div>
+                <div class="bottom">意大利炮</div>
+            </div>
+        </li>
+        <li>
+            <div class="box">
+                <div class="fornt">来一个</div>
+                <div class="bottom">不来，谢谢！</div>
+            </div>
+        </li>
+    </ul>
+</body>
+
+</html>

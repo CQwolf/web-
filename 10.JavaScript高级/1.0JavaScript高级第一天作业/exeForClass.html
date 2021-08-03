@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类的测试</title>
+</head>
+
+<body>
+    <script>
+        //     ## 1.子类继承父类的属性和方法
+        // - 题目描述
+        //   一个父类中有money(钱) cars(车) house(房) company(公司) 属性,有管理(manage)的方法,子类要继承父类中的属性和方法
+        // - 训练目标
+        //   能够理解继承的原理
+        // - 训练提示
+        //   1. 创建父类添加属性和方法
+        //   2. 子类通过extends关键字继承到父类的属性和方法
+        //   3. 注意constructor和this的问题
+        class Father {
+            constructor(money, cars, house, company) {
+                this.money = money;
+                this.cars = cars;
+                this.house = house;
+                this.company = company;
+            }
+            manage(str) {
+                document.write(str + "<br>");
+            }
+            print() {
+                document.write(this.money + "<br>");
+                document.write(this.cars + "<br>");
+                document.write(this.house + "<br>");
+                document.write(this.company + "<br>");
+            }
+        }
+        // 子类继承父类，若子类没有没有 constructor()方法，那么参数默认传给父类，子类共享父类的属性和方法
+        // 但是若子类自己有 constructor()方法默认加载子类的方法，此时，传参给父类需要用super调用父类的方法
+        // 子类调用方法首先看子类有没有，子类有就调用子类，子类没有就调用父类（就近原则）
+        class Son extends Father {
+            constructor(money, cars, house, company) {
+                super(money, cars, house, company);
+                super.print();
+            }
+        }
+        var son1 = new Son("100w", "长安", "别墅", "阿里巴巴");
+        print1(son1);
+
+        function print1(ele) {
+            for (var index in ele) {
+                document.write(ele[index] + "<br>");
+            }
+        }
+        son1.manage("快乐就好");
+        son1.print();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串统计</title>
+</head>
+
+<body>
+    <script>
+        var si = 'usnuxsuxnsuwssuxs';
+        var o = {};
+        // if(o['a'])方法可以判断o里面是否有a属性
+        for (var i = 0; i < si.length; i++) {
+            // 判断对象的属性是否存在
+            if (o[si.charAt(i)]) {
+                o[si.charAt(i)]++;
+            } else {
+                o[si.charAt(i)] = 1;
+            }
+        }
+        console.log(o);
+        var max = 0;
+        var ch = '';
+        for (var k in o) {
+            // 因为o是对象
+            // k是属性
+            // o[k]才是属性值
+            if (max < o[k]) {
+                max = o[k];
+                ch = k;
+            }
+        }
+        console.log(ch + '次数最多为：' + max);
+        // 简单数据类型包括：string,number,float,boolean,null,null的instanceof类型为Object,
+        // 但是依旧为基本数据类型
+        // 简单数据类型类型实参影响形参，形参不影响实参
+        function add(a, b) {
+            if (a < b)
+                a = a + b;
+            else
+                a = a - b;
+            // a输出应该是25
+            console.log(a);
+        }
+        var a = 10;
+        var b = 15;
+        add(a, b);
+        // a输出应该是10
+        console.log(a);
+    </script>
+</body>
+
+</html>

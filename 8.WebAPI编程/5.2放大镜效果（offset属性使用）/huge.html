@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>放大镜效果</title>
+    <style>
+        body {
+            background: lightgoldenrodyellow;
+        }
+        
+        h1 {
+            color: lightsalmon;
+        }
+        
+        h5 {
+            color: #f00;
+        }
+        
+        h1,
+        h5 {
+            margin-left: 50px;
+        }
+        
+        .comebig {
+            margin-left: 300px;
+            position: relative;
+            width: 402px;
+            height: 402px;
+        }
+        
+        .mask {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 300px;
+            height: 300px;
+            background: #fede4F;
+            opacity: .5;
+            border: 1px solid #ccc;
+            cursor: move;
+            z-index: 2;
+            border-radius: 150px;
+        }
+        
+        .min {
+            width: 400px;
+            border: 1px solid #ccc;
+        }
+        
+        .big {
+            display: none;
+            position: absolute;
+            left: 410px;
+            top: 0;
+            width: 500px;
+            height: 500px;
+            border: 1px solid #ccc;
+            overflow: hidden;
+        }
+        
+        .max {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>放大镜效果</h1>
+    <h5>提示:将鼠标放在图片上即可自动出现放大镜效果</h5>
+    <div class="comebig">
+        <div class="mask"></div>
+        <img src="images/b3.png" alt="" class="min">
+        <div class="big">
+            <img src="images/big.jpg" alt="" class="max">
+        </div>
+    </div>
+    <script>
+        window.addEventListener("load", function() {
+            var comebig = document.querySelector(".comebig");
+            var mask = document.querySelector(".mask");
+            var big = document.querySelector(".big");
+            var max = document.querySelector(".max");
+            // 第一步
+            // 鼠标放在照片时，出现遮挡层和大图
+            // 离开时则遮挡层和图片消失
+            comebig.addEventListener("mouseover", function() {
+                mask.style.display = "block";
+                big.style.display = "block";
+            });
+            comebig.addEventListener("mouseout", function() {
+                mask.style.display = "none";
+                big.style.display = "none";
+            });
+            // 第二步将遮挡层进行移动
+            comebig.addEventListener("mousemove", function(e) {
+                // 鼠标在盒子里的坐标
+                var maskX = e.pageX - this.offsetLeft;
+                var maskY = e.pageY - this.offsetTop;
+                // 遮挡层移动距离（修正后）
+                var masklineX = maskX - mask.offsetWidth / 2;
+                var masklineY = maskY - mask.offsetHeight / 2;
+                // 遮挡层最大移动距离
+                var minlineX = this.offsetWidth - mask.offsetWidth;
+                var minlineY = this.offsetHeight - mask.offsetHeight;
+                // 大盒子的最大移动距离
+                var maxlineX = max.offsetWidth - big.offsetWidth;
+                var maxlineY = max.offsetHeight - big.offsetHeight;
+                //第三步限制范围在盒子内
+                if (masklineX <= 0) {
+                    masklineX = 0;
+                } else
+                if (masklineX > minlineX) {
+                    masklineX = minlineX;
+                }
+                if (masklineY <= 0) {
+                    masklineY = 0;
+                } else if (masklineY > minlineY) {
+                    masklineY = minlineY;
+                }
+                mask.style.left = masklineX + "px";
+                mask.style.top = masklineY + "px";
+                // 第四步大小盒子进行同步移动
+                // 公式：小盒子移动距离/小盒子最大移动距离 = 大盒子移动距离/大盒子最大移动距离
+                max.style.left = -masklineX / minlineX * maxlineX + "px";
+                max.style.top = -masklineY / minlineY * maxlineY + "px";
+            });
+        })
+    </script>
+</body>
+
+</html>

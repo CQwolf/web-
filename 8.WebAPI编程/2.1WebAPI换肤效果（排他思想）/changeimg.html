@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>背景切换效果</title>
+    <style>
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+        
+        body {
+            background: url(images/1.jpg) no-repeat center top;
+            background-size: cover;
+        }
+        
+        .baidu {
+            margin: 0 auto;
+            height: 130px;
+            width: 600px;
+        }
+        
+        .baidu li {
+            float: left;
+            padding: 0 5px;
+            height: 130px;
+            line-height: 130px;
+            cursor: pointer;
+        }
+        
+        .baidu img {
+            width: 100px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="baidu">
+        <li>
+            <img src="images/1.jpg" alt="">
+        </li>
+        <li>
+            <img src="images/2.jpg" alt="">
+        </li>
+        <li>
+            <img src="images/3.jpg" alt="">
+        </li>
+        <li>
+            <img src="images/4.jpg" alt="">
+        </li>
+    </ul>
+    <script>
+        var baidu = document.getElementsByClassName("baidu");
+        var imgs = baidu[0].getElementsByTagName("img");
+        for (var i = 0; i < imgs.length; i++) {
+            imgs[i].onclick = function() {
+                document.body.style.backgroundImage = "url(" + this.src + ")";
+            }
+        }
+    </script>
+</body>
+
+</html>

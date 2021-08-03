@@ -1,0 +1,45 @@
+{{extend "./common/layout.art"}}
+
+{{block "main"}}
+    <div class="login-body">
+        <div class="login-container">
+            <h4 class="title">黑马程序员 - 博客管理员登录</h4>
+            <div class="login">
+                <form action="/admin/login" method="post" id="loginForm">
+                    <div class="form-group">
+                        <label>邮件</label>
+                        <input name="email" type="email" class="form-control" placeholder="请输入邮箱地址" value="itxiaohu@itcast.com">
+                    </div>
+                    <div class="form-group">
+                        <label>密码</label>
+                        <input name="password" type="password" class="form-control" placeholder="请输入密码" value="123456">
+                    </div>
+                    <button type="submit" class="btn btn-primary">登录</button>
+                </form>
+            </div>
+            <div class="tips"></div>
+        </div>
+    </div>
+{{/block}}
+
+{{block "script"}}
+<script src="/admin/js/common.js"></script>
+<script type="text/javascript">
+    // 第一重表单的验证
+    // 为表单添加表单提交事件
+    $("#loginForm").on("submit",function (){
+        // 获取表单提交的内容
+        const f = serializeToJSON($(this));
+        // 用户未输入邮箱时
+        if(f.email.trim().length == 0){
+            alert("邮箱为空！");
+            return false;
+        }
+        // 用户未输入密码时
+        if(f.password.trim().length == 0){
+            alert("密码为空！");
+            return false;
+        }
+    })
+</script>
+{{/block}}

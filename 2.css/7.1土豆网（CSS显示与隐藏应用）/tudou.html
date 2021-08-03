@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>土豆网效果</title>
+	<style type="text/css">
+		/* 刚开始是有一个黑色半透明盒子,最初看不见
+		当鼠标放上去后才能看见 */
+		.under {
+			position: relative;
+			width: 222px;
+			height: 220px;
+			margin: 0 auto;
+		}
+		.top_on {
+			display: none;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 222px;
+			height: 220px;
+			background: rgba(0,0,0,.3) url(images/arr.png) no-repeat center center;
+		}
+		.under a:hover .top_on {
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div class="under">
+		<a href="#">
+			<img src="images/3.jpg" alt="图片">
+			<div class="top_on"></div>
+		</a>
+	</div>
+</body>
+</html>

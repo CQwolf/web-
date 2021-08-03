@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+        
+        img {
+            vertical-align: top;
+        }
+        
+        .top {
+            width: 1500px;
+            margin: 0 auto;
+        }
+        
+        .main {
+            margin: 0 auto;
+            width: 1000px;
+        }
+        
+        #Q-nav {
+            width: 1500px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+    </style>
+    <script src="../jQuery3.60/jquery.min.js"></script>
+    <script>
+        $(function() {
+            // 当移动到导航栏的时候，导航栏就固定不动
+            // 用滚动事件来判断
+            // 获取第一个盒子的高度的距离
+            var QTopHeight = $(".top").outerHeight();
+            $(window).on("scroll", function() {
+                // 大于这个距离就改成固定定位
+                if ($(document).scrollTop() > QTopHeight) {
+                    // 第二个盒子加定位，第三个盒子加padding
+                    $("#Q-nav").css({
+                        position: "fixed",
+                        top: 0,
+                        left: "50%",
+                        "margin-left": -$("#Q-nav").outerWidth() / 2,
+                    });
+                    $(".main").css({
+                        padding: $("#Q-nav").outerHeight(),
+                    });
+                    // 小于就变为静态定位
+                } else {
+                    // 去除定位
+                    // margin变回来
+                    $("#Q-nav").css({
+                        position: "static",
+                        margin: "0 auto",
+                        left: 0,
+
+                    });
+                    $(".main").css({
+                        "padding-top": 0,
+                    });
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <!--第一张图片-->
+    <div class="top" id="top">
+        <img src="images/top.png" alt="" />
+    </div>
+    <!--第二张图片-->
+    <div id="Q-nav">
+        <img src="images/nav.png" alt="" />
+    </div>
+    <!--第三张图片-->
+    <div class="main" id="main">
+        <img src="images/main.png" alt="" />
+    </div>
+
+
+</body>
+
+</html>

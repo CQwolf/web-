@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第二天作业题目四</title>
+    <style>
+        table {
+            width: 400px;
+            border: 1px solid #000;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        
+        td,
+        th {
+            border: 1px solid #000;
+            text-align: center;
+        }
+        
+        input {
+            width: 50px;
+        }
+        
+        .search {
+            width: 600px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ## 修改课堂案例查询商品
+
+    - 题目描述
+    
+      当输入框输入文字进行实时匹配(模糊查询) 
+    
+    - 训练目标 
+    
+      理解属性的高级方法
+    
+    - 训练提示
+    
+      1. 当用户输入一个'小' 字,筛选的结果小米就显示在表格中,不需要点击查询按钮
+      2. 使用表单事件
+      3. 重点是检测输入框的值和数据中的值是否存在包含的关系  -->
+    <div class="search">
+        按照价格查询: <input type="text" class="start"> - <input type="text" class="end"> <button class="search-price">搜索</button> 按照商品名称查询: <input type="text" class="product"> <button class="search-pro">查询</button>
+        <button class="reset">重置</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>产品名称</th>
+                <th>价格</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        // 利用新增数组方法操作数据
+        var data = [{
+            id: 1,
+            pname: '小米',
+            price: 3999
+        }, {
+            id: 2,
+            pname: 'oppo',
+            price: 999
+        }, {
+            id: 3,
+            pname: '荣耀',
+            price: 1299
+        }, {
+            id: 4,
+            pname: '华为',
+            price: 1999
+        }, ];
+        // 1.获取元素
+        var tbody = document.querySelector("tbody");
+        var search_price = document.querySelector(".search-price");
+        var start = document.querySelector(".start");
+        var end = document.querySelector(".end");
+        var search_pro = document.querySelector(".search-pro");
+        var product = document.querySelector(".product");
+        var reset = document.querySelector(".reset");
+        // 2.使用data数组的forEach方法遍历动态生成相应的元素
+        // 初始化生成数据
+        dataFresh(data);
+        // 封装函数
+        function dataFresh(myData) {
+            // 生成数据前先清空数据
+            tbody.innerHTML = "";
+            myData.forEach(function(value) {
+                // 创建一个tr
+                var tr = document.createElement("tr");
+                // 导入数据
+                tr.innerHTML = "<td>" + value.id + "</td>" + "<td>" + value.pname + "</td>" + "<td>" + value.price + "</td>";
+                // 追加到tbody中
+                tbody.appendChild(tr);
+            });
+        }
+        // 3.输入价格查询相应的条目,点击搜索后执行
+        search_price.addEventListener("click", function() {
+            var newDate = [];
+            // 接收符合条件的数组
+            newDate = data.filter(function(value) {
+                return value.price >= start.value && value.price <= end.value;
+            });
+            // 然后渲染数据
+            dataFresh(newDate);
+        });
+        // 4.商品名字查询
+        // 表单事件被按下，此处最好使用keyup键而不是keydown，
+        // 因为keyup为抬起判断，keydown为按下判断
+        // 或者使用change事件
+        product.addEventListener("change", function() {
+            // filter,找到所有的符合值
+            var onlyData = data.filter(function(value) {
+                if (value.pname.includes(product.value)) {
+                    return value;
+                }
+            });
+            // 如果使用some方法的话可能会导致值返回一个值
+            dataFresh(onlyData);
+        });
+        // 5.点击重置则会回到原始数据页面
+        reset.addEventListener("click", function() {
+            dataFresh(data);
+        });
+    </script>
+</body>
+
+</html>

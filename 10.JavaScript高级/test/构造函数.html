@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        function Test(name, sex) {
+            this.name = name;
+            this.sex = sex;
+            this.sing = function() {
+                console.log("aaa");
+            }
+        }
+        Test.sing1 = function() {
+            console.log("bbb");
+        }
+        Test.prototype.sing2 = function() {
+            console.log("ccc");
+        }
+        const test1 = new Test("你好", "男");
+        // test1.sing1();
+        test1.sing();
+        test1.sing2();
+        Test.sing1();
+        console.dir(Test);
+        console.log(Test);
+        console.log(Test.prototype);
+        console.log(test1.__proto__);
+        console.log(Test === Test.prototype.constructor);
+    </script>
+</body>
+
+</html>

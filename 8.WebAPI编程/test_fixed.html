@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>固定定位测试</title>
+    <style>
+        .a,
+        .b,
+        .c {
+            position: fixed;
+            width: 500px;
+            height: 300px;
+        }
+        
+        .a {
+            background: red;
+            z-index: 999;
+        }
+        
+        .b {
+            top: 100px;
+            left: 100px;
+            background: green;
+            /* background-origin: .5; */
+        }
+        
+        .c {
+            top: 150px;
+            left: 150px;
+            background: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="a"><input type="text"></div>
+    <div class="b"></div>
+    <div class="c"><input type="text"></div>
+</body>
+
+</html>

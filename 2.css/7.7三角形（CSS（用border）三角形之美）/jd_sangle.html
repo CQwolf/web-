@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>京东三角形</title>
+	<style type="text/css">
+		.box {
+			position: relative;
+			margin: 200px auto 0;
+			width: 400px;
+			height: 350px;
+			background-color: pink;
+		}
+		.box p {
+			position: absolute;
+			left: 50%;
+			margin-left: -40px;
+			top: -80px;
+			width: 0;
+			height: 0;
+			/* 去除字号和行高 */
+			font-size: 0;
+			line-height: 0;
+			border-width: 40px;
+			border-style: solid;
+			border-color: transparent transparent pink transparent;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<p></p>
+	</div>
+</body>
+</html>

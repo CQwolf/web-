@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>导航栏</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		li {
+			list-style-type: none;
+		}
+		.logo {
+			width: 760px;
+			height: 150px;
+			background: url(images/banner.jpg) no-repeat center;
+			margin: 0 auto;
+		}
+		.nav {
+			width: 760px;
+			height: 32px;
+			background: url(images/nav_bg.jpg) repeat-x;
+			margin: 0 auto;
+		}
+		.nav li {
+			/* 因为li保证文字竖直显示 */
+			float: left;
+		}
+		.nav li a {
+			display: inline-block;
+			width: 80px;
+			height: 32px;
+			text-align: center;
+			line-height: 32px;
+			color: #40510A;
+			font-size: 12px;
+			text-decoration: none;
+			background: url(images/button1.jpg) no-repeat;
+		}
+		.nav li a:hover {
+			color: white;
+			background: url(images/button2.jpg) no-repeat;
+		}
+	</style>
+</head>
+<body>
+	<div class="logo"></div>
+	<!-- 重要导航栏包含li(a)方法 -->
+	<div class="nav">
+		<ul>
+			<li><a href="#">网站首页</a></li>
+			<li><a href="#">网站首页</a></li>
+			<li><a href="#">网站首页</a></li>
+			<li><a href="#">网站首页</a></li>
+			<li><a href="#">网站首页</a></li>
+			<li><a href="#">网站首页</a></li>
+		</ul>
+	</div>
+</body>
+</html>

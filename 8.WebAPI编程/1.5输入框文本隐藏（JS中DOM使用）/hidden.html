@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>隐藏输入框的值</title>
+    <style>
+        input#txt {
+            color: #999;
+            outline: none;
+            border: 0;
+            border-bottom: 1px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" name="" id="txt" value="手机">
+    <script>
+        var text = document.getElementById("txt");
+        text.onfocus = function() {
+            if (this.value === "手机") {
+                this.value = "";
+            }
+            this.style.color = "#333";
+        }
+        text.onblur = function() {
+            if (this.value === "") {
+                this.value = "手机";
+            }
+            this.style.color = "#999";
+        }
+    </script>
+</body>
+
+</html>

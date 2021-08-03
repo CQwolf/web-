@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>五角星评分案例</title>
+    <style>
+        body {
+            font-family: "simsun";
+        }
+        
+        .comment {
+            font-size: 40px;
+            color: #ff1100;
+            overflow: hidden;
+        }
+        
+        .comment li {
+            float: left;
+            cursor: pointer;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        p button {
+            font-size: 14px;
+            text-decoration: none;
+            cursor: pointer;
+            outline: none;
+            color: gold;
+            background: rgba(90, 45, 80, .5);
+        }
+    </style>
+    <script src="../jQuery3.60/jquery.min.js"></script>
+    <script>
+        $(function() {
+            //空心五角星和实心五角星
+            var KX_WJX = "☆";
+            var SX_WJX = "★";
+            // 1.不管点击与否，当鼠标经过第n个li,则n前面所有li变化
+            $(".comment").on("mouseenter", "li", function() {
+                PosChange(this);
+            });
+            // 2.判断是否点击某个小li没有,点击过以此为基准添加一个class:current为基准
+            $(".comment").on("click", "li", function() {
+                $(this).addClass("current").siblings().removeClass("current");
+            });
+            // 3.因为离开后未点击时应该全部回归原位，还需要进行点击事件的判断
+            $(".comment").on("mouseleave", "li", function() {
+                //    如果没有点击,全部归于空心
+                if ($(".current").length == 0) {
+                    $("li").text(KX_WJX);
+                }
+                // 若点击过，则需要点击之前的li全部变实心
+                else {
+                    PosChange(".current");
+                    // 第二种方法,利用前兄弟和后兄弟
+                    // $(".current").prevAll().text(SX_WJX);
+                    // $(".current").text(SX_WJX);
+                    // $(".current").nextAll().text(KX_WJX);
+                }
+            });
+            // 5. 如果点击了重置按钮，所有内容清空
+            $("p .a").on("click", function() {
+                $("li").text(KX_WJX);
+                // 还要移除所有的current类
+                $("li").removeClass("current");
+            });
+            // 4.封装函数，归哪个位置之前变换
+            function PosChange(ele) {
+                // 先获取当前移动到的的坐标
+                var indexMax = $(ele).index();
+                // 当小于这个坐标的内容都变换,大于则不进行改变
+                $.each($(".comment li"), function(index, ele) {
+                    if (index <= indexMax) {
+                        $(ele).text(SX_WJX);
+                    } else {
+                        $(ele).text(KX_WJX);
+                    }
+                });
+            }
+        })
+    </script>
+</head>
+
+<body>
+
+    <h1>点击选择你喜欢的星星数</h1>
+    <ul class="comment">
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+    </ul>
+    <p>
+        <!-- <a href="javascript:;">重置</a> -->
+        <button class="a">重置</button>
+    </p>
+
+</body>
+
+</html>

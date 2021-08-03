@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #nav {
+            list-style-type: none;
+        }
+        
+        #nav li a {
+            color: green;
+            text-decoration: none;
+            padding: 3px;
+            display: block;
+        }
+        
+        #nav {
+            width: 35%;
+            float: left;
+        }
+        
+        @media screen and (max-width: 699px) and (min-width: 520px),
+        (min-width: 1151px) {
+            #nav li a {
+                padding-left: 30px;
+                background: url(email-icon.png) left center no-repeat;
+            }
+        }
+        
+        @media screen and (max-width: 1000px) and (min-width: 700px) {
+            #nav li a:before {
+                content: "Email: ";
+                font-style: italic;
+                color: #666666;
+            }
+        }
+        
+        @media screen and (min-width: 1001px) {
+            #nav li a:after {
+                content: " (" attr(data-email) ")";
+                font-size: 12px;
+                font-style: italic;
+                color: #666666;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>重置浏览器窗口，查看效果!</h1>
+
+    <ul id="nav">
+        <li><a data-email="johndoe@example.com" href="mailto:johndoe@example.com">John Doe</a></li>
+        <li><a data-email="marymoe@example.com" href="mailto:marymoe@example.com">Mary Moe</a></li>
+        <li><a data-email="amandapanda@example.com" href="mailto:amandapanda@example.com">Amanda Panda</a></li>
+    </ul>
+
+    <div id="main">
+        <p>这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！</p>
+    </div>
+
+</body>
+
+</html>

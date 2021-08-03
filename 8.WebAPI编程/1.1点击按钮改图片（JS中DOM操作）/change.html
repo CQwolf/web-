@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点击按钮切换图片</title>
+    <style>
+        img {
+            width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="cat">点击我换成猫</button>
+    <button id="dog">点击我换成狗</button>
+    <p>
+        <img src="images/cat.jpg" alt="" title="猫咪">
+    </p>
+    <script>
+        // 首先获取到对应元素的事件源对象
+        var cat = document.getElementById("cat");
+        var dog = document.getElementById("dog");
+        var img = document.querySelector("img");
+        // 然后绑定事件，并完成操作
+        cat.onclick = function() {
+            // 通过属性进行改变内容
+            img.src = "images/cat.jpg";
+            img.title = "猫咪";
+        }
+        dog.onclick = function() {
+            // 通过属性进行改变内容
+            img.src = "images/dog.jpg";
+            img.title = "狗狗";
+        }
+    </script>
+</body>
+
+</html>

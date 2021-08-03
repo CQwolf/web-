@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>day02练习</title>
+</head>
+
+<body>
+    <script>
+        // test1
+        // 通过弹出框提示用户输入时间信息，根据用户输入的时间弹出问候信息；
+        //     如：
+        // 用户输入的时间在6-12之间 弹出“上午好”；
+        // 用户输入的时间在13-18之间 弹出“下午好”；
+        // 用户输入的时间在19-23之间 弹出“晚上好”；
+        // 用户输入的时间在0-5之间 弹出“这是休息时间，不要说话！”；
+        var time = prompt("现在几点了");
+        if (time <= 5) {
+            alert("这是休息时间，别说话");
+        } else if (time <= 12) {
+            alert("上午好");
+        } else if (time <= 18) {
+            alert("下午好");
+        } else if (time <= 23) {
+            alert("晚上好");
+        }
+        // test2
+        // 通过提示框提示用户依次输入2个数值，用户输入完成后弹出用户输入的最大值、
+        var num1 = prompt("请输入第一个数");
+        var num2 = prompt("请输入第二个数");
+        var max = 0;
+        if (num1 > num2)
+            max = num1;
+        else
+            max = num2;
+        alert("最大值为" + max);
+        // test3
+        // 通过提示框提示用户输入一个数值，用户输入完成后弹出数值的奇偶性
+        var num3 = prompt("请输入一个数");
+        if (num3 % 2 == 0)
+            alert("这是偶数");
+        else
+            alert("这是奇数");
+        // test4
+        // 假设这个月1号是星期一，提示用户输入本月的日期（即1日-31日），返回用户输入日期是星期几
+        var day = prompt("请输入日期数");
+        var dayOfTime = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+        var dayOftime2 = day % 7;
+        alert("今天" + dayOfTime[dayOftime2]);
+        // test5
+        // 接收班长口袋里的钱数？
+        // 若大于等于2000，请大家吃西餐。
+        // ​若小于2000，大于等于1500，请大家吃快餐。
+        // ​若小于1500，大于等于1000，请大家喝饮料。
+        // ​若小于1000，大于等于500，请大家吃棒棒糖。
+        // 否则提醒班长下次把钱带够
+        var score = prompt('请输入你多少钱');
+        if (score >= 2000)
+            alert('请大家吃西餐');
+        else if (score >= 1500)
+            alert('请大家吃快餐');
+        else if (score >= 1000)
+            alert('请大家喝饮料')
+        else if (score >= 500)
+            alert('请大家吃棒棒糖');
+        else
+            alert('下次带够钱');
+        // test6
+        // 通过弹出输入框提示用户输入一个分数，
+        // 判定份数的等级。大于等于90 --- 在控制台打印A，
+        // 大于等于80小于90 ---- 在控制台打印B，
+        // 大于等于70小于80 ---- 在控制台打印C ，
+        // 大于等于60小于70 ---- 在控制台打印D，
+        // 小于60 ---- 在控制台打印E
+        var score = prompt('请输入你的成绩，以得到评价');
+        if (score >= 90)
+            alert('你真的很牛皮');
+        else if (score >= 80)
+            alert('你有点牛皮');
+        else if (score >= 70)
+            alert('你比较一般嘛')
+        else if (score >= 60)
+            alert('你有点菜哦');
+        else
+            alert('你是真的菜');
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>文字省略号效果</title>
+	<style type="text/css">
+		div {
+			width: 150px;
+			height: 25px;
+			border: 1px solid pink;
+			/* 当文字显示不开时,自动换行 */
+			/* white-space: normal; */
+			/* 1.文字强制一行内显示 除非遇到 br */
+			white-space: nowrap;
+			/* 2.溢出的部分隐藏起来 */
+			overflow: hidden;
+			/* 文字溢出显示模式 默认裁剪 我们用省略号 */
+			text-overflow: ellipsis;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		hi~来自星星的你，你好吗
+	</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生成绩统计</title>
+    <script>
+        var NumOfStudent = prompt('请本班输入学生总人数：');
+        var SumOfGrade = 0;
+        var EachOfStudent = 0;
+        var AveregeOfGrae = 0;
+        for (var i = 1; i <= NumOfStudent; i++) {
+            EachOfStudent = prompt('请输入第' + i + '个学生的成绩:');
+            SumOfGrade += parseInt(EachOfStudent - 0);
+        }
+        AveregeOfGrae = parseFloat(SumOfGrade) / parseInt(NumOfStudent);
+        console.log('本班所有学生的成绩和为：' + SumOfGrade + '\n本班学生的平均分为：' + AveregeOfGrae);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

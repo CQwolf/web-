@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>video使用</title>
+    <style type="text/css">
+        video {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- poster属性用于设置视频未播放的第一帧画面 -->
+    <video src="video/video.mp4" controls="controls" poster="video/pig.jpg" muted="muted"></video>
+    <!-- 谷歌浏览器把自动播放禁用了 -->
+    <!-- muted 静音播放 -->
+    <video autoplay="autoplay" muted="muted" loop="loop">
+        <source src="video/video.mp4" type="video/mp4">
+        <source src="video/video.ogg" type="video/ogg">
+    </video>
+
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>太极图</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background-color: skyblue;
+        }
+        
+        .circle {
+            margin: 50px auto;
+            width: 200px;
+            height: 400px;
+            border-left: 200px solid #000;
+            background-color: #fff;
+            border-radius: 50%;
+            transition: all 120s ease-in-out;
+            /* animation: rotate 120s ease-in-out; */
+            cursor: pointer;
+        }
+        
+        .circle::before,
+        .circle::after {
+            content: "";
+            display: block;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-left: -100px;
+        }
+        
+        .circle::before {
+            background-color: #fff;
+            border: 75px solid #000;
+        }
+        
+        .circle::after {
+            background-color: #000;
+            border: 75px solid #fff;
+        }
+        
+        @keyframes rotate {
+            0% {}
+            100% {
+                transform: rotate(3600000deg);
+            }
+        }
+        
+        .circle:hover {
+            transform: rotate(3600000deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="circle"></div>
+</body>
+
+</html>

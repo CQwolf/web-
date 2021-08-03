@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单错误验证</title>
+    <style>
+        div {
+            width: 600px;
+            margin: 100px auto;
+        }
+        
+        .message {
+            display: inline-block;
+            font-size: 12px;
+            color: #999;
+            background: url(images/mess.png) no-repeat left center;
+            padding-left: 20px;
+        }
+        
+        .wrong {
+            color: red;
+            background-image: url(images/wrong.png);
+        }
+        
+        .right {
+            color: green;
+            background-image: url(images/right.png);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="register">
+        <input type="password" class="ipt">
+        <p class="message">请输入6~16位密码</p>
+    </div>
+    <script>
+        var ipt = document.getElementsByClassName("ipt");
+        var message = document.getElementsByClassName("message");
+        ipt[0].onblur = function() {
+            if (this.value.length < 6 || this.value.length > 16) {
+                message[0].innerText = "您输入的信息不对，不在6-16位之间";
+                message[0].className = "message wrong";
+            } else {
+                message[0].innerText = "您输入的信息正确";
+                message[0].className = "message right";
+            }
+        }
+    </script>
+</body>
+
+</html>

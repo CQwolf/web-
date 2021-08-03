@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态创建表格</title>
+    <style>
+        table#Stu {
+            margin: 100px auto;
+        }
+        
+        #Stu td {
+            width: 80px;
+            height: 45px;
+            text-align: center;
+            font-size: 14px;
+            color: red;
+            border: 1px solid darkgray;
+            margin: -1px 0 0 -1px;
+        }
+        
+        #Stu caption {
+            border: 1px solid darkgray;
+        }
+        
+        #Stu thead {
+            font-weight: 700;
+        }
+        
+        a {
+            text-decoration: none;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="Stu">
+        <caption>学生成绩数据</caption>
+        <thead>
+            <tr>
+                <td>姓名</td>
+                <td>学科</td>
+                <td>成绩</td>
+                <td>操作</td>
+            </tr>
+        </thead>
+        <tbody id="list">
+
+        </tbody>
+    </table>
+    <script>
+        // 创建数据，利用以为数组，每个数组元素为一个对象
+        var datas = [{
+            name: "王奇异",
+            obj: "JavaScript",
+            score: "98",
+        }, {
+            name: "黎簇",
+            obj: "JavaScript",
+            score: "100",
+        }, {
+            name: "大海",
+            obj: "JavaScript",
+            score: "87",
+        }, {
+            name: "孟军",
+            obj: "JavaScript",
+            score: "65",
+        }, {
+            name: "习惯",
+            obj: "JavaScript",
+            score: "99",
+        }];
+        //获取tbody
+        var lists = document.getElementById("list");
+        for (var i = 0; i < datas.length; i++) {
+            //先创建行
+            var trs = document.createElement("tr");
+            lists.appendChild(trs);
+            // 再创建单元格
+            for (var j in datas[i]) {
+                var tds = document.createElement("td");
+                // j为对象的属性名
+                // console.log(j);
+                // object[j]为对象的属性名对应的值
+                // console.log(datas[i][j]);
+                tds.innerHTML = datas[i][j];
+                trs.appendChild(tds);
+            }
+            var ts = document.createElement("td");
+            ts.innerHTML = "<a href='javaScript:;'>删除</a>";
+            trs.appendChild(ts);
+        }
+        var deletes = lists.querySelectorAll("a");
+        // 将所有a添加点击删除事件
+        for (var i = 0; i < datas.length; i++) {
+            deletes[i].onclick = function() {
+                lists.removeChild(this.parentNode.parentNode);
+            }
+        }
+    </script>
+</body>
+
+</html>

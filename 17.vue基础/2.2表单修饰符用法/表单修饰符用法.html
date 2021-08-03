@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单修饰符用法</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>.number使用方法,将表单的字符串型转换为数字型，用于相加</p>
+        <div>
+            <p>使用.number修饰符的加法</p>
+            <input type="text" v-model.number="msg">
+            <p>{{ msg }}</p>
+            <button @click="handle">增加3</button>
+        </div>
+        <div>
+            <p>使用.trim修饰符,实现去除收尾空格字符串</p>
+            <input type="text" v-model.trim="msg1">
+            <p>{{ msg1 }}</p>
+        </div>
+        <div>
+            <p>使用.lazy修饰符,input事件变为change事件</p>
+            <input type="text" v-model.lazy="msg2">
+            <p>{{ msg2 }}</p>
+        </div>
+    </div>
+    <!-- 引入vue.js -->
+    <script src="../js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                msg: "",
+                msg1: "",
+                msg2: ""
+            },
+            methods: {
+                handle: function() {
+                    this.msg = this.msg + 3;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

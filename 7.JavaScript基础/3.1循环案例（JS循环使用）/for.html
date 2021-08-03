@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>循环案例</title>
+    <script>
+        // 求1-100所有数的平均值
+        var ave = 0;
+        var i = 0;
+        var sum = 0;
+        for (i = 1; i <= 100; i++) {
+            sum += i;
+        }
+        ave = sum / 100.0;
+        console.log('1-100所有数的平均值为：' + ave);
+        // 求1-100中奇数和偶数之和
+        var JNUmSum = 0;
+        var ONumSum = 0;
+        for (i = 1; i <= 100; i++) {
+            if (i % 2 != 0)
+                JNUmSum += i;
+            else
+                ONumSum += i;
+        }
+        console.log('1-100中，奇数和为：' + JNUmSum + '偶数和为：' + ONumSum);
+        // 求1-100中可以被3整除的数字的和
+        var DivideByThreeNum = 0;
+        var DivideBySeven = 0;
+        var DivideByAll = 0;
+        for (i = 1; i <= 100; i++) {
+            if (i % 3 == 0)
+                DivideByThreeNum += i;
+            if (i % 7 == 0)
+                DivideBySeven += i;
+            if (i % 3 && i % 7 == 0)
+                DivideByAll += i;
+        }
+        console.log('1-100中，能被三整除的数之和为：' + DivideByThreeNum);
+        console.log('1-100中，能被七整除的数之和为：' + DivideBySeven);
+        console.log('1-100中，能被三和七整除的数之和为：' + DivideByAll);
+        // 求从1 开始第35个能被7和3整除的整数
+        var numberoftimes = 0;
+        i = 1;
+        var j = 0;
+        while (true) {
+            if (i % 3 == 0 && i % 7 == 0)
+                j++;
+            if (j == 35) {
+                console.log("从1 开始第35个能被7和3整除的整数：" + i);
+                break;
+            }
+            i++
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

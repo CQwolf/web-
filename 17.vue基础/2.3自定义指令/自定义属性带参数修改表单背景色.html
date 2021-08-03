@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义指令</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 打开修改表单背景色这个表单 -->
+        <input type="text" v-focus-color="msg.color">
+        <div style="width:300px;height: 500px;" v-color="msg.color1"></div>
+        <div v-html="msg.color"></div>
+    </div>
+    <!-- 引入vue.js -->
+    <script src="../js/vue.js"></script>
+    <script>
+        // 全局注册自定义指令
+        // focus为自定义的指令名，使用时需要v-focus
+        Vue.directive("focusColor", {
+            // inserted:为属性插入dom里面时调用函数
+            inserted: function(el, binding) {
+                // el参数为固定，表示绑定的dom元素
+                el.style.backgroundColor = binding.value;
+            }
+        })
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                msg: {
+                    color: "blue",
+                    color1: "black"
+                }
+            },
+            // 局部注册
+            directives: {
+                color: {
+                    inserted: function(el, binding) {
+                        el.style.backgroundColor = binding.value;
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

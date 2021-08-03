@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>倒三角星星</title>
+    <script>
+        // 打印5行5列的星星
+        var str = '';
+        var rows = prompt('请输入行数：');
+        for (var i = rows; i >= 1; i--) {
+            for (var j = i; j >= 1; j--) {
+                str += '★';
+            }
+            str += '\n';
+        }
+        console.log('倒三角:\n');
+        console.log(str);
+        str = '';
+        for (var i = 1; i <= rows; i++) {
+            for (var j = 1; j <= i; j++) {
+                str += '★';
+            }
+            str += '\n';
+        }
+        console.log('正三角:\n');
+        console.log(str);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

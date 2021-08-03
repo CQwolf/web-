@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>打字机</title>
+    <style type="text/css">
+        div {
+            overflow: hidden;
+            width: 0;
+            height: 30px;
+            line-height: 30px;
+            font-size: 20px;
+            background-color: black;
+            color: aqua;
+            /* 强制文字一行显示 */
+            white-space: nowrap;
+            /* 分为15步进行打字延迟 最后停留在终点 */
+            animation: write 5s steps(15) forwards;
+        }
+        
+        @keyframes write {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div>天天的对着你笑，你的心思由我猜</div>
+</body>
+
+</html>

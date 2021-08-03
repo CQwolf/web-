@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function people(name, sex) {
+            this.name = name;
+            this.sex = sex;
+            // 实例方法
+            this.say = function(message) {
+                alert(message);
+            }
+        }
+        // 实例方法
+        people.prototype.say2 = function(message) {
+            alert(message);
+        }
+
+        // 对象方法
+        people.say3 = function(message) {
+            alert(message);
+        }
+        var p = new people("zhu", "nan");
+        console.dir(people);
+        people.say3("hello");
+    </script>
+</body>
+
+</html>

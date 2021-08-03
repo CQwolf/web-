@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tab栏切换增强版</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .vertical-tab {
+            width: 920px;
+            margin: 100px auto;
+        }
+        
+        .vertical-tab .nav {
+            list-style: none;
+            width: 200px;
+        }
+        
+        .vertical-tab .nav-tabs1 {
+            border-right: 3px solid #e7e7e7;
+        }
+        
+        .vertical-tab .nav-tabs2 {
+            border-left: 3px solid #e7e7e7;
+        }
+        
+        .vertical-tab .nav a.active {
+            color: blue;
+        }
+        
+        .vertical-tab .nav a {
+            display: block;
+            font-size: 18px;
+            font-weight: 700;
+            color: black;
+            text-align: center;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 10px 20px;
+            margin: 0 0 1px 0;
+            text-decoration: none;
+        }
+        
+        .vertical-tab .tab-content {
+            color: #555;
+            background-color: #fff;
+            font-size: 15px;
+            letter-spacing: 1px;
+            line-height: 23px;
+            padding: 10px 15px 10px 25px;
+            display: table-cell;
+            position: relative;
+        }
+        
+        .vertical-tab .nav-tabs1 {
+            float: left;
+        }
+        
+        .vertical-tab .tabs {
+            width: 500px;
+            box-sizing: border-box;
+            float: left;
+        }
+        
+        .vertical-tab .tab-content h3 {
+            font-weight: 600;
+            color: red;
+            text-transform: uppercase;
+            margin: 0 0 5px 0;
+        }
+        
+        .vertical-tab .nav-tabs2 {
+            float: right;
+        }
+        
+        .tab-content .tab-pane {
+            display: none;
+        }
+        
+        .tab-content .tab-pane.active {
+            display: block;
+        }
+        
+        .fade {
+            opacity: 0;
+            transition: all .3s linear;
+        }
+        
+        .fade.active {
+            opacity: 1;
+        }
+        
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ## tab栏切换增强版
+
+    - ### 题目描述
+    
+      - 点击tab栏  内容区域显示对应的内容 
+      - 如 点击   SECTION 1   则 内容区域显示 对应 SECTION 1 的内容  同时当前 SECTION的字体颜色变成蓝色 
+    
+    - ### 训练目标
+    
+      - 能够理解vue 中的数据渲染
+      - 能够理解 v-for,  v-if  , v-bind ,  v-click 的使用 
+      - 能够理解 vue 中调用函数的时候传递参数 -->
+    <!-- - 第一步：  将 list 中的数据title 渲染到 左侧和 右侧的tab栏中 
+  - 注意：  左右各渲染3条数据
+- 第二步：  将 list 中的数据title 和  content  渲染到 内容区域
+- 第三步：  给左侧的tab栏中的li绑定事件  实现动态切换active 类名 
+  - 注意： 给点击的当前li  添加类名 active    即可让当前的li字体颜色改变 (类名是 active的样式已经在CSS中提前定义好 )
+  - 其他 li  需要移除类名 active 
+- 第四步： 拿到当前点击li的索引   让 内容区域中 对应索引类名是 tab-pane 的 div  显示
+  - 注意： 给  类名是  tab-pane   的 div  添加  类名 active  即可让当前div 显示出来  (类名是 active的样式已经在CSS中提前定义好 )
+  - 其他  tab-pane   的 div  需要移除类名 active 
+- 第五步： 给右侧的tab栏中的li绑定事件  实现动态切换active 类名 
+  -  注意： 给点击的当前li  添加类名 active    即可让当前的li字体颜色改变 (类名是 active的样式已经在CSS中提前定义好 )
+- 第六步： 拿到当前点击li的索引   让 内容区域中 对应索引类名是 tab-pane 的 div  显示
+  - 注意：  这里需要注意索引问题：  
+    - 点击右侧第一个div 的时候 需要让内容区域中的第 4个 div 显示出来 
+    - 点击右侧第2个div 的时候 需要让内容区域中的第 5个 div 显示出来  -->
+    <div id="app" class="vertical-tab">
+        <!-- 左侧tab栏 -->
+        <!-- 声明式渲染 -->
+        <ul class="nav nav-tabs1">
+            <!-- 此处声明一个变量，根据电机获取的index而改变 -->
+            <li @click="handle1(index)" v-if="index < list.length / 2" :key="val.id" v-for="(val,index) in list">
+                <a href="javascript:;" :class="currentIndex == index?'active':''" v-cloak> {{val.title}} </a>
+            </li>
+        </ul>
+        <!-- 内容区域 -->
+        <div class="tab-content tabs">
+            <div :class="currentIndex == index?currentContentArr:contentArr" :key="val.id" v-for="(val,index) in list">
+                <h3 v-cloak>{{val.title}}</h3>
+                <p v-cloak>{{val.content}}</p>
+            </div>
+        </div>
+        <ul class="nav nav-tabs2">
+            <!-- 右侧tab栏 -->
+            <li @click="handle1(index)" v-if="index >= list.length/2" :key="val.id" v-for="(val,index) in list">
+                <a href="javascript:;" :class="currentIndex == index?'active':''" v-cloak> {{val.title}} </a>
+            </li>
+        </ul>
+    </div>
+    <!-- 引入vue.js -->
+    <script src="../js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                // 数据
+                list: [{
+                    id: 1,
+                    title: 'Section 1',
+                    content: 'content1'
+                }, {
+                    id: 2,
+                    title: 'Section 2',
+                    content: 'content2'
+                }, {
+                    id: 3,
+                    title: 'Section 3',
+                    content: 'content3'
+                }, {
+                    id: 4,
+                    title: 'Section 4',
+                    content: 'content4'
+                }, {
+                    id: 5,
+                    title: 'Section 5',
+                    content: 'content5'
+                }, {
+                    id: 6,
+                    title: 'Section 6',
+                    content: 'content6'
+                }],
+                // 当前的索引号
+                currentIndex: 0,
+                // 选中的内容
+                currentContentArr: ["tab-pane", "fade", "active"],
+                // 未选中的内容
+                contentArr: ["tab-pane", "fade"],
+            },
+            methods: {
+                handle1: function(index) {
+                    this.currentIndex = index;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,177 @@
+/* 注册页面样式 */
+
+
+/* 版心 */
+
+.w {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+
+/* logo部分 */
+
+.register-logo {
+    padding-top: 16px;
+    height: 66px;
+    border-bottom: 1px solid #b1191a;
+}
+
+
+/* 注册部分 */
+
+.register-input {
+    margin-top: 20px;
+    height: 520px;
+    border: 1px solid #ccc;
+}
+
+.input-head {
+    padding: 0 10px;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #ccc;
+    background-color: #ececec;
+    font-size: 18px;
+    color: #333333;
+}
+
+.head-title {
+    float: left;
+}
+
+.head-login {
+    float: right;
+    font-size: 14px;
+}
+
+.head-login i {
+    color: #c81623;
+}
+
+.input-con {
+    height: 478px;
+}
+
+.input-con .inp-list {
+    margin: 55px 0 0 310px;
+}
+
+.inp-list li {
+    margin-bottom: 20px;
+    width: 640px;
+}
+
+.inp-list label {
+    display: inline-block;
+    width: 95px;
+    height: 35px;
+    font-size: 14px;
+    color: #4c4c4c;
+    line-height: 35px;
+    text-align: right;
+    cursor: pointer;
+}
+
+.inp-list .inp {
+    padding-left: 5px;
+    width: 235px;
+    height: 33px;
+    border: 1px solid #ccc;
+}
+
+.error,
+.success {
+    padding-left: 10px;
+    color: #df3033;
+}
+
+.error .error-icon,
+.success .success-icon {
+    display: inline-block;
+    margin-top: -2px;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    background: url(../img/error.png) no-repeat center;
+}
+
+.success {
+    color: #40b83f;
+}
+
+.success .success-icon {
+    background: url(../img/success.png) no-repeat;
+}
+
+.safe {
+    margin: 7px 0 0 170px;
+}
+
+.safe em {
+    display: inline-block;
+    width: 36px;
+    height: 14px;
+    line-height: 14px;
+    text-align: center;
+    color: #fff;
+}
+
+.safe .ruo {
+    background-color: #de1111;
+}
+
+.safe .zhong {
+    background-color: #40b83f;
+}
+
+.safe .qiang {
+    background-color: #f79100;
+}
+
+.agree {
+    padding: 20px 0 0 100px;
+}
+
+.agree input[type="checkbox"] {
+    vertical-align: middle;
+    color: #1ba1e6;
+    cursor: pointer;
+}
+
+.agree a {
+    color: #1ba1e6;
+}
+
+.btn-register {
+    margin: 30px 0 0 110px;
+    width: 200px;
+    height: 34px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    background-color: #c81623;
+    border: 0;
+    cursor: pointer;
+}
+
+
+/* 底部版权 */
+
+.mod-copyright {
+    position: absolute;
+    bottom: 50px;
+    text-align: center;
+}
+
+.mod-copyright-links {
+    margin: 20px 0 15px 0;
+}
+
+.mod-copyright-links a {
+    padding: 0 12px;
+}
+
+.mod-copyright-info {
+    line-height: 18px;
+}

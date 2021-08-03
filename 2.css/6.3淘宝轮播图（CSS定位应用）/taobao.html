@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>淘宝轮播图</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		a {
+			text-decoration: none;
+		}
+		li {
+			list-style-type: none;
+		}
+		.taobao {
+			position: relative;
+			width: 520px;
+			height: 280px;
+			margin: 100px auto;
+		}
+		.l-b,
+		.r-b {
+			position: absolute;
+			top: 50%;
+			width: 20px;
+			height: 30px;
+			margin-top: -15px;
+			background-color: rgba(0,0,0,.2);
+			line-height: 30px;
+			color: #fff;
+		}
+		.l-b {
+			left: 0;
+			border-radius: 0 15px 15px 0;
+		}
+		.r-b {
+			right: 0;
+			text-align: right;
+			border-radius: 15px 0 0 15px;
+		}
+		.l-b,
+		.r-b {
+			background-color: rgba(0,0,0,.4);
+		}
+		.circle {
+			position: absolute;
+			left: 50%;
+			bottom: 15px;
+			width: 70px;
+			height: 13px;
+			background-color: rgba(255,255,255,.5);
+			border-radius: 7px;
+		}
+		.circle li {
+			float: left;
+			width: 8px;
+			height: 8px;
+			background-color: #fff;
+			border-radius: 50%;
+			margin: 3px;
+		}
+		.circle .current {
+			background-color: #ff5000;
+		}
+	</style>
+</head>
+<body>
+	<div class="taobao">
+		<!-- 图片 -->
+		<img src="images/taobao.jpg" alt="产品图片">
+		<!-- 左按钮 -->
+		<a href="#" class="l-b"> &lt; </a>
+		<a href="#" class="r-b"> &gt; </a>
+		<ul class="circle">
+			<li></li>
+			<li class="current"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+</body>
+</html>

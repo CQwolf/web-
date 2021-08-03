@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>密码输入查看</title>
+    <style>
+        .box {
+            position: relative;
+            margin: 100px auto;
+            width: 400px;
+            border-bottom: 1px solid #ccc;
+        }
+        
+        .box input {
+            width: 370px;
+            height: 30px;
+            border-width: 0;
+            outline: none;
+        }
+        
+        .box label {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+        }
+        
+        .box img {
+            width: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <label for="">
+            <img id="img" src="images/close.png" alt="">
+        </label>
+        <input type="password" id="pwd">
+    </div>
+    <script>
+        var img1 = document.getElementById("img");
+        var input1 = document.getElementById("pwd");
+        var flag = 0;
+        // 根据点击次数实现不同的密码显示
+        img1.onclick = function() {
+            if (flag == 0) {
+                input1.type = "password";
+                img1.src = "images/close.png";
+                flag = 1;
+            } else {
+                input1.type = "text";
+                img1.src = "images/open.png";
+                flag = 0;
+            }
+        }
+    </script>
+</body>
+
+</html>

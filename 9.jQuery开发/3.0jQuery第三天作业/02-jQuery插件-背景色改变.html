@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            margin: 100px;
+            background-color: red;
+            /* border: 1px solid red; */
+        }
+    </style>
+    <script src="../jQuery3.60/jquery.min.js"></script>
+    <script src="jquery.color.js"></script>
+    <script>
+        $(function() {
+            // 先声明一个颜色数组
+            // var colors = ["brown", "yello", "pink", "green", "darkgray", "red"];
+            // var height = [400, 300, 200, 100, 50, 350];
+            // var width = [400, 300, 200, 100, 50, 350];
+            // 声明一个颜色下标
+            // var colorIndex = 0;
+            // 点击按钮循环给背景div不同的颜色
+            $("button").on("click", function() {
+                // 三元运算符判断是否本轮颜色变换完成
+                // colorIndex = colorIndex == (colors.length) ? 0 : colorIndex;
+                // 颜色变换一次，计数器加一
+                // console.log(colors[colorIndex]);
+                $("div").stop().animate({
+                    // "background-color": colors[colorIndex],
+                    // width: width[colorIndex],
+                    // height: height[colorIndex],
+                    "background-color": "#000",
+                    width: 400,
+                    height: 400,
+                    // borderColor: colors[colorIndex],
+                }, 1000, function() {
+                    // colorIndex++;
+                });
+            })
+        })
+    </script>
+</head>
+
+<body>
+
+    <button>改变背景色</button>
+    <div></div>
+
+</body>
+
+</html>

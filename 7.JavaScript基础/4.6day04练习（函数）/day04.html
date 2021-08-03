@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>day04练习</title>
+</head>
+
+<body>
+    <script>
+        // 1. 写一个函数，能返回传入的任意两个数字的最大值。
+        // 2. 写一个函数，能返回传入的任意三个数字的最大值。
+        // 3. 写一个函数，能判断传入的一个数值是否是质数，如果是质数返回true，如果不是质数返回false，(质数：从2开始只能被1和自身整数的数)
+        function numberchnge() {
+            if (arguments.length == 0) {
+                console.log("无效参数");
+            } else if (arguments.length == 1) {
+                if (arguments[0] < 0) {
+                    console.log("输入错误，无法识别");
+                } else if (arguments[0] == 1) {
+                    consoloe.log("1既不是素数");
+                } else if (arguments[0] == 2) {
+                    consoloe.log("2是素数");
+                } else if (arguments[0] > 2) {
+                    for (var i = 2; i < arguments[0]; i++) {
+                        if (arguments[0] % i == 0) {
+                            console.log(arguments[0] + "这个数不是素数");
+                            return false;
+                        }
+                        if (i == arguments[0] - 1) {
+                            console.log(arguments[0] + "这个数是素数");
+                            return true;
+                        }
+                    }
+                }
+            } else if (arguments.length == 2) {
+                var max = arguments[0];
+                if (max < arguments[1]) {
+                    max = arguments[1];
+                }
+                console.log(arguments[0] + "," + arguments[1] + "中最大数为：" + max);
+                return max;
+            } else if (arguments.length == 3) {
+                var max = arguments[0];
+                if (max < arguments[1]) {
+                    max = arguments[1];
+                }
+                if (max < arguments[2]) {
+                    max = arguments[2];
+                }
+                console.log(arguments[0] + "," + arguments[1] + "," + arguments[2] + "最大数为：" + max);
+                return max;
+            }
+        }
+        console.log(numberchnge(3));
+        console.log(numberchnge(4, 7));
+        console.log(numberchnge(4, 8, 10));
+        // 1. 写一个函数，能翻转传入的任意数组，并把翻转结果通过返回值返回。
+        function ReverseNumber(arr) {
+            var temp = 0;
+            for (var i = 0; i < parseInt((arr.length + 1) / 2); i++) {
+                temp = arr[i];
+                arr[i] = arr[arr.length - i - 1];
+                arr[arr.length - i - 1] = temp;
+            }
+            return arr;
+        }
+        var number = [1, 56, 78, 4, 3, 4, 5, 6, 7, 8, 4, 4, 4, 3, 43, 34, 56, 78, 90, 23];
+        console.log(ReverseNumber(number));
+        // console.log((number.length + 1) / 2);
+        // 2. 写一个函数，能对所有传入的数组按照从小到大进行排序，并把排序结果通过返回值返回
+        function sortnum(arr) {
+            var temp = 0;
+            for (var i = 0; i < arr.length; i++) {
+                for (var j = 0; j < arr.length - i - 1; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+            }
+            return arr;
+        }
+        console.log(sortnum(number));
+        // - 用户在弹出的输入框中选择要做的运算
+        // - 用户选择后弹出两个输入框，让用户输入数据
+        // - 根据用户选择的操作和输入的数据，计算出最后结果并弹出提示框显示结果
+        function Tojisuan(num1, op, num2) {
+            if (op == 1) {
+                return num1 + num2;
+            } else if (op == 2) {
+                return num1 - num2;
+            } else if (op == 3) {
+                return num2 * num1;
+            } else if (op == 4) {
+                if (num2 == 0) {
+                    alert("被除数不能为0");
+                } else {
+                    return num1 / num2;
+                }
+            }
+        }
+        var str1 = '欢迎使用建议计算器：\n1.加法运算：\n2.减法运算：\n3.乘法运算：\n4.除法运算：\n5.退出：';
+        var op;
+        var num1;
+        var num2;
+        while (true) {
+            op = parseInt(prompt(str1));
+            num1 = parseInt(prompt('请输入第一个数：'));
+            num2 = parseInt(prompt('请输入第二个数：'));
+            if (op == 5) {
+                alert("谢谢使用，再见");
+                break;
+            }
+            if (Tojisuan(num1, op, num2)) {
+                alert("计算结果为：" + Tojisuan(num1, op, num2));
+            } else {
+                alert("计算结果出错");
+            }
+        }
+    </script>
+</body>
+
+</html>

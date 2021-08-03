@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则表达式验证表单</title>
+    <style>
+        .msg {
+            color: #CCC;
+        }
+        
+        .right {
+            color: green;
+        }
+        
+        .wrong {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" class="userName"> <span class="msg">请输入用户名</span>
+    <script>
+        // 使用正则表达式验证表单
+        // 获取元素
+        var userName = document.querySelector(".userName");
+        var msg = document.querySelector(".msg");
+        // 创建一个正则表达式的判断语句
+        var regUserName = /^[a-zA-Z0-9_-]{4,13}$/;
+        // 因为不能指定this为userName所以暂时不用
+        // const changeMSG = () => {
+        //         console.log(this);
+        //         // 利用test函数进行匹配输入字符串是否正确
+        //         if (regUserName.test(this.value)) {
+        //             msg.innerHTML = "输入用户名格式合法";
+        //             msg.className = "right";
+        //         } else {
+        //             msg.innerHTML = "输入用户名格式不合法";
+        //             msg.className = "wrong";
+        //         }
+        //     }
+        // 当表单发生变化时进行判断，使用change事件
+        userName.addEventListener("keydown", function() {
+            // console.log(this);
+            // 利用test函数进行匹配输入字符串是否正确
+            if (regUserName.test(this.value)) {
+                msg.innerHTML = "输入用户名格式合法";
+                msg.className = "right";
+            } else {
+                msg.innerHTML = "输入用户名格式不合法";
+                msg.className = "wrong";
+            }
+        });
+    </script>
+</body>
+
+</html>

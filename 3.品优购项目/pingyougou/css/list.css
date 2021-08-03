@@ -1,0 +1,237 @@
+/* 列表项页面 */
+
+
+/* 秒杀标志部分 */
+
+.header .miaosha {
+    position: absolute;
+    top: 40px;
+    left: 185px;
+    width: 72px;
+    height: 32px;
+    padding: 3px 0 3px 14px;
+    border-left: 1px solid #b1191a;
+}
+
+
+/* 导航栏部分 */
+
+.nav {
+    height: 45px;
+}
+
+.nav li {
+    float: left;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+}
+
+.nav li a {
+    display: block;
+    height: 100%;
+}
+
+.nav li a:hover {
+    color: #e33333;
+}
+
+
+/* 秒杀选项部分 */
+
+.nav .sk {
+    width: 370px;
+    height: 45px;
+}
+
+.sk li {
+    margin: 0 28px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.sk li a {
+    color: #000;
+}
+
+
+/* tab栏选项卡部分 */
+
+.nav .sk-tab-list {
+    width: 830px;
+    height: 45px;
+}
+
+.nav .sk-tab-list li {
+    margin: 0 22px;
+    font-size: 14px;
+}
+
+.sk-tab-list li.end {
+    line-height: 40px;
+}
+
+.sk-tab-list span.last {
+    font-family: 'icomoon';
+    font-size: 18px;
+}
+
+
+/* 列表项部分 */
+
+
+/* 列表头部部分 */
+
+.sk-container .sk-head {
+    height: 120px;
+}
+
+
+/* 列表内容部分 */
+
+.sk-container .sk-body {
+    margin-top: 25px;
+}
+
+.sk-body ul {
+    width: 1212px;
+}
+
+.sk-container .sk-body .sk-goods {
+    position: relative;
+    float: left;
+    width: 288px;
+    height: 458px;
+    border: 1px solid transparent;
+    margin: 0 12px 12px 0;
+}
+
+.sk-container .sk-body .sk-goods:hover {
+    border: 1px solid #e12228;
+    box-shadow: 0 4px 8px #ccc;
+}
+
+.sk-goods .sk-title {
+    padding: 0 10px 10px;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.sk-goods .sk-price {
+    padding: 0 10px;
+}
+
+.sk-price em {
+    font-size: 22px;
+    font-weight: bold;
+    color: #e60012;
+}
+
+.sk-price del {
+    font-size: 14px;
+    font-weight: bold;
+    color: #a4a4a4;
+}
+
+.sk-progress {
+    padding-left: 10px;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.sk-progress .bar {
+    display: inline-block;
+    width: 130px;
+    height: 10px;
+    border: 1px solid #ed282e;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 0 5px;
+}
+
+.bar .bar-con {
+    width: 87%;
+    height: inherit;
+    background-color: #f24349;
+}
+
+.sk-buy {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    background-color: #b1191a;
+}
+
+.sk-buy:hover {
+    color: #ccc;
+}
+
+
+/* 分页按钮部分 */
+
+
+/* 页码部分 */
+
+.page {
+    margin: 35px 0 50px 0;
+    text-align: center;
+}
+
+.page-num a {
+    display: inline-block;
+    width: 37px;
+    height: 37px;
+    line-height: 37px;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+}
+
+.page-num .page-prev,
+.page-num .page-next {
+    width: 83px;
+}
+
+.page-num .current,
+.page-num .page-num-more {
+    border: 1px solid transparent;
+    background-color: transparent;
+}
+
+.page-num .current {
+    color: #e43994;
+}
+
+
+/* 跳转部分 */
+
+.page-skip {
+    margin-left: 25px;
+}
+
+.page-skip input {
+    width: 37px;
+    height: 37px;
+    line-height: 37px;
+    text-align: center;
+    border: 1px solid #ccc;
+    transition: all .5s;
+}
+
+.page-skip input:focus {
+    width: 88px;
+    border: 1px solid skyblue;
+}
+
+.page-skip button {
+    width: 55px;
+    height: 37px;
+    line-height: 37px;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+}

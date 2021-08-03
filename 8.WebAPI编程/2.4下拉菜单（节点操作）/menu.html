@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试图案</title>
+    <style>
+        .box {
+            margin: 100px auto;
+            width: 400px;
+        }
+        
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul>li {
+            list-style-type: none;
+            width: 80px;
+            height: 40px;
+            line-height: 40px;
+            border: 1px solid #c45;
+            text-align: center;
+            /* 去除border的重叠效果 */
+            margin-top: -1px;
+            margin-left: -1px;
+        }
+        
+        .box>li {
+            position: relative;
+            float: left;
+        }
+        
+        .box li ul {
+            width: 500px;
+            height: 50px;
+        }
+        
+        .box ul li {
+            cursor: pointer;
+            float: left;
+        }
+        
+        .box li a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            line-height: 40px;
+            text-align: center;
+            text-decoration: none;
+            color: black;
+            font-size: 14px;
+        }
+        
+        .box>li ul {
+            position: absolute;
+            top: 41px;
+            left: 0;
+        }
+        
+        .box ul {
+            display: none;
+        }
+        
+        .box li ul li:hover {
+            background-color: #FFF5DA;
+            color: #ff0000;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="box">
+        <li>
+            <a href="#">你好</a>
+            <ul>
+                <li>大概好像</li>
+                <li>大概好像</li>
+                <li>大概好像</li>
+                <li>大概好像</li>
+                <li>大概好像</li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">你好</a>
+            <ul>
+                <li>大概好像</li>
+                <li>大概好像</li>
+                <li>大概好像</li>
+                <li>大概好像</li>
+                <li>大概好像</li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">你好</a>
+            <ul>
+                <li>大概好像</li>
+                <li>大概好像</li>
+                <li>大概好像</li>
+                <li>大概好像</li>
+                <li>大概好像</li>
+            </ul>
+        </li>
+    </ul>
+    <script>
+        var menu_lists = document.querySelector(".box").children;
+        for (var i = 0; i < menu_lists.length; i++) {
+            menu_lists[i].onmouseover = function() {
+                this.children[1].style.display = "block";
+                this.children[0].style.color = "white";
+                this.children[0].style.background = "darkgray";
+            }
+            menu_lists[i].onmouseout = function() {
+                this.children[1].style.display = "none";
+                this.children[0].style.color = "";
+                this.children[0].style.background = "";
+            }
+        }
+    </script>
+</body>
+
+</html>

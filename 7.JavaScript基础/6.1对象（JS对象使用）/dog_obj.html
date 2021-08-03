@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>狗对象</title>
+    <script>
+        // 字面法申请对象
+        // 狗对象
+        var dog = {
+                name: '可可',
+                type: '阿拉斯加犬',
+                age: 5,
+                color: '红棕色',
+                bark: function() {
+                    console.log('汪汪汪');
+                },
+                showFlim: function() {
+                    console.log('表演电影');
+                }
+            }
+            //变量调用
+        console.log(dog.name, dog.type, dog['age'], dog.color);
+        // 函数调用
+        dog.bark();
+        dog.showFlim();
+        // 名人对象
+        //通过创建对象，追加模式赋值
+        var minren = new Object();
+        minren.name = '鸣人';
+        minren.age = 19;
+        minren.sex = '男';
+        minren.skill = function() {
+            console.log('影分身术');
+        }
+        console.log(minren.name, minren.age, minren.sex);
+        minren.skill();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

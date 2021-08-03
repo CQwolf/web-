@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>替换字母为汉字</title>
+</head>
+
+<body>
+    <!-- ## 1 - 将下列字符串使用正则表达式替换文本
+
+- 题目描述
+
+  将字符串 'cqyzsC012QzAabcd'中的acq(忽略大小写)替换为'你好'
+
+
+- 训练目标
+
+  正则的全局替换忽略大小写
+
+- 训练提示
+
+  replace  gi -->
+    <div class="tip">提示：将原为acq的各个字母替换为你好（忽略大小写）</div>
+    <div class="oldStr">原字符串：cqyzsC012QzAabcd</div>
+    <div class="newStr"></div>
+    <script>
+        // 获取元素
+        var newStr = document.querySelector(".newStr");
+        // 使用replace方法进行泽政表达式替换
+        var oldStr = "cqyzsC012QzAabcd";
+        // 模式还可以为： / a | c | q /
+        newStr.innerHTML = "替换后的字符串为：" + oldStr.replace(/[acq]/gi, "你好");
+        console.log(oldStr.replace(/a|c|q/gi, "你好"));
+    </script>
+</body>
+
+</html>

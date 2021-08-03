@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试</title>
+</head>
+
+<body>
+    <h3>此页面既不可打开右键菜单，又不可选中文字</h3>
+    不可复制的文字
+    <script>
+        // 测试逻辑运算返回值
+        var b = 1 || 2;
+        var c = 0 || 0;
+        var d = 1 && 2;
+        var e = 0 && 2;
+        console.log(b, c, d, e);
+        // 禁止右键打开菜单
+        document.addEventListener("contextmenu", function(e) {
+            e.preventDefault();
+        });
+        // 禁止选中文字
+        document.addEventListener("selectstart", function(e) {
+            e.preventDefault();
+        });
+        // 键盘禁用
+        document.addEventListener("keydown", function(e) {
+            e.preventDefault();
+        })
+
+        function test() {
+            // 函数里面声明的变量为局部变量
+            var f = 0;
+            console.log(f);
+        }
+        test();
+        console.log(f);
+    </script>
+</body>
+
+</html>

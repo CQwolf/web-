@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自动关闭的广告</title>
+    <style>
+        h1 {
+            color: red;
+        }
+        
+        span {
+            font-size: 30px;
+            color: brown;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>五秒后广告消失，10秒后广告出现</h1>
+    <span>0秒</span>
+    <br>
+    <img src="images/ad.jpg" alt="广告">
+    <script>
+        var img = document.querySelector("img");
+        var span = document.querySelector("span");
+        var i = 0;
+        var num = setInterval(function() {
+            i += num;
+            span.innerHTML = i + "秒";
+        }, 1000);
+
+        // 五秒后广告消失
+        var s1 = setTimeout(function() {
+            img.style.display = "none";
+        }, 5000);
+        // 十秒后广告出现
+        var s2 = setTimeout(function() {
+            img.style.display = "block";
+        }, 10000);
+    </script>
+</body>
+
+</html>

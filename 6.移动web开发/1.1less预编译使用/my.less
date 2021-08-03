@@ -1,0 +1,26 @@
+@color:pink;
+@colorRed:red;
+@font14:14px;
+body{
+    background-color: @color;
+}
+div{
+    color: @color;
+    font-size:@font14;
+}
+p{
+    font-size:@font14;
+    width:(80rem / 50);
+    height: (80 / 50rem);
+    font-size: @font14 - 14px;
+}
+div{
+    &:hover{
+        color: @color;
+    }
+    &::before{
+        content:"";
+        
+        color: @color;
+    }
+}

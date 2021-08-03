@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>精灵图循环样式</title>
+    <style>
+        ul {
+            margin: 200px auto;
+            width: 192px;
+            height: 144px;
+        }
+        
+        li {
+            list-style: none;
+            float: left;
+            width: 24px;
+            height: 24px;
+            margin: 12px;
+            background: url(images/sprite.png) no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="box" class="nu">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        var lis = document.querySelectorAll("li");
+        // 必须使用ID标识来获得
+        var ul1 = document.getElementById("box");
+        lis = ul1.getElementsByTagName("li");
+        var ul2 = document.getElementsByClassName("nu");
+        lis = ul2[0].getElementsByTagName("li");
+        // console.log(lis)
+        for (var i = 0; i < lis.length; i++) {
+            var index = i * 44;
+            lis[i].style.backgroundPosition = "0 -" + index + "px";
+        }
+    </script>
+</body>
+
+</html>

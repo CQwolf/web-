@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>递增互不影响</title>
+</head>
+
+<body>
+    <!-- ## 3 - 点赞案例
+
+    
+    - 题目描述
+    
+      使用闭包实现点击每个按钮,按钮中的数字都是单独递增的,互不影响
+    
+    - 训练目标
+    
+      能够理解闭包
+    
+    - 训练提示
+    
+      结构中有四个按钮分别绑定点击事件
+    
+      点击事件触发一个函数 是修改按钮中文字大数值
+    
+      使用闭包实现数字的递增 -->
+    <button>点赞0</button>
+    <button>点赞0</button>
+    <button>点赞0</button>
+    <button>点赞0</button>
+    <p>12</p>
+    <script>
+        // 获取元素
+        var buttons = document.querySelectorAll("button");
+        var p = document.querySelector("p");
+        // 利用立即执行函数实现绑定
+        // for (var i = 0; i < buttons.length; i++) {
+        //     (function(i) {
+        //         buttons[i].index = 0;
+        //         buttons[i].onclick = function() {
+        //             buttons[i].innerHTML = "点赞" + buttons[i].index;
+        //             buttons[i].index += 1;
+        //         }
+        //     })(i);
+        // }
+        // 利用立即执行函数实现绑定,下面这种就不行，因为点击函数不能获取到for循环的i,里面为异步任务，外面为同步任务
+        // 这种是最为正确的写法同样可以实现闭包
+        // for (var i = 0; i < buttons.length; i++) {
+        //     buttons[i].onclick = getValue();
+        // }
+        // // 返回的为函数
+        // function getValue() {
+        //     var value = 1;
+        //     return function() {
+        //         this.innerHTML = "点赞" + value++;
+        //     }
+        // }
+        // p.onclick = function() {
+        //     var dy = () => {
+        //         console.log(this)
+        //         this.innerHTML = 123;
+        //     };
+        //     dy();
+
+        // }
+        p.onclick = function() {
+            var dy = function() {
+                console.log(this)
+                this.innerHTML = 123;
+            };
+            dy.call(this);
+
+        }
+    </script>
+</body>
+
+</html>

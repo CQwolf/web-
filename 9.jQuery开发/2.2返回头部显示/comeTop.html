@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>返回头部</title>
+    <style>
+        body {
+            height: 2000px;
+        }
+        
+        .back {
+            position: fixed;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            background-color: pink;
+            right: 30px;
+            bottom: 100px;
+            display: none;
+        }
+        
+        .container {
+            width: 900px;
+            height: 500px;
+            background-color: skyblue;
+            margin: 400px auto;
+        }
+    </style>
+    <script src="../jQuery3.60/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="back">返回顶部</div>
+    <div class="container">
+    </div>
+    <script>
+        $(function() {
+            var cTop = $(".container").offset().top;
+            // 首先滚动到某个地方时显示.back
+            $(window).on("scroll", function() {
+                // console.log($(this).scrollTop());
+                if ($(this).scrollTop() >= cTop) {
+                    $(".back").fadeIn(1000);
+                } else {
+                    $(".back").addClass(1000);
+                }
+            });
+            // 回到顶部
+            $(".back").on("click", function() {
+                // animate的前面不能是对象，应该是元素
+                $("html,body").stop().animate({
+                    scrollTop: 0
+                }, 1000);
+            });
+        })
+    </script>
+</body>
+
+</html>

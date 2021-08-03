@@ -1,0 +1,294 @@
+/* 默认样式和字体 */
+
+body {
+    width: 100%;
+    min-width: 320px;
+    max-width: 640px;
+    margin: 0 auto;
+    font-family: -apple-system, helvetica, sans-serif;
+    line-height: 1.5;
+    color: #666;
+    font-size: 14px;
+}
+
+
+/*点击高亮我们需要清除清除  设置为transparent 完成透明*/
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/*在移动端浏览器默认的外观在iOS上加上这个属性才能给按钮和输入框自定义样式*/
+
+input {
+    -webkit-appearance: none;
+}
+
+
+/*禁用长按页面时的弹出菜单*/
+
+img,
+a {
+    -webkit-touch-callout: none;
+}
+
+ul,
+input {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+a {
+    color: #666;
+    text-decoration: none;
+}
+
+img {
+    vertical-align: middle;
+}
+
+input {
+    outline: none;
+}
+
+
+/* C3盒子模型 */
+
+div {
+    box-sizing: border-box;
+}
+
+
+/* 清除浮动 */
+
+.clearfix:after {
+    content: "";
+    display: block;
+    line-height: 0;
+    visibility: hidden;
+    height: 0;
+    clear: both;
+}
+
+
+/* 顶部app部分 */
+
+.app {
+    height: 45px;
+}
+
+.app li {
+    float: left;
+    height: 45px;
+    line-height: 45px;
+    background-color: #333;
+    text-align: center;
+}
+
+.app li:nth-child(1) {
+    width: 8%;
+}
+
+.app li:nth-child(1) img {
+    width: 10px;
+    height: 10px;
+}
+
+.app li:nth-child(2) {
+    width: 10%;
+}
+
+.app li:nth-child(2) img {
+    width: 30px;
+    height: 30px;
+}
+
+.app li:nth-child(3) {
+    width: 57%;
+}
+
+.app li:nth-child(4) {
+    width: 25%;
+    background-color: #F63515;
+}
+
+.app li:nth-child(3) a,
+.app li:nth-child(4) a {
+    font-size: 14px;
+    color: #fff;
+}
+
+
+/* 顶部search部分 */
+
+.search {
+    position: fixed;
+    top: 45px;
+    /* 居中 */
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 320px;
+    max-width: 640px;
+    width: 100%;
+    height: 44px;
+    background-color: #1E2462;
+}
+
+.search-more,
+.search-login {
+    position: absolute;
+    width: 40px;
+    height: 44px;
+}
+
+.search-more {
+    left: 0;
+    top: 0;
+}
+
+.search-more span {
+    display: block;
+    margin: 14px 0 0px 15px;
+    height: 18px;
+    background: url(../images/s-btn.png) no-repeat;
+    background-size: 20px 18px;
+}
+
+.search-login span {
+    display: inline-block;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #fff;
+}
+
+.search-login {
+    right: 0;
+    top: 0;
+}
+
+.search-con {
+    position: relative;
+    margin: 7px 70px;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 22px;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.search-con .search-JD-icon {
+    display: inline-block;
+    margin: 8px 8px 0 15px;
+    width: 20px;
+    height: 15px;
+    background: url(../images/jd-sprites.png) no-repeat;
+    background-size: 200px auto;
+}
+
+.search-con .search-icon {
+    display: inline-block;
+    position: relative;
+    margin: 8px 0 0 5px;
+    width: 18px;
+    height: 15px;
+    background: url(../images/jd-sprites.png) no-repeat;
+    background-position: -120px 0;
+    background-size: 200px auto;
+}
+
+.search-icon::before {
+    display: inline-block;
+    position: absolute;
+    top: -1px;
+    left: -5px;
+    content: "";
+    width: 1px;
+    height: 17px;
+    background-color: #ccc;
+}
+
+.search-con input[type="text"] {
+    position: absolute;
+    top: 0;
+    left: 80px;
+    width: 100%;
+    height: 30px;
+    border: 0;
+    color: #666;
+}
+
+
+/* 主体部分 */
+
+.slider img {
+    width: 100%;
+}
+
+
+/* 小家电品牌日 */
+
+.brand {
+    margin: 10px 0;
+    border-radius: 10px 10px 0 0;
+}
+
+.brand div {
+    float: left;
+    width: 33.33%;
+}
+
+.brand a img {
+    width: 100%;
+}
+
+
+/* 导航栏 */
+
+.nav {
+    height: 162px;
+}
+
+.nav li {
+    float: left;
+    width: 20%;
+    height: 81px;
+    text-align: center;
+    background-color: #F6F6F6;
+}
+
+.nav a img {
+    margin-top: 20px;
+    width: 40px;
+}
+
+.nav a span {
+    display: block;
+}
+
+
+/* 新闻 */
+
+.news {
+    margin-top: 10px;
+}
+
+.news a {
+    display: block;
+    float: left;
+    width: 25%;
+}
+
+.news a img {
+    width: 100%;
+}
+
+.news a:nth-child(1) {
+    width: 50%;
+}
+
+.news a:nth-child(n+2) {
+    border-left: 1px solid #ccc;
+    box-sizing: border-box;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跟随移动的小天使</title>
+    <style>
+        body {
+            background: url(images/999.webp) no-repeat center center;
+            height: 800px;
+        }
+        
+        img {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="images/angel.gif" alt="移动的天使">
+    <script>
+        var img = document.querySelector("img");
+        document.addEventListener("mousemove", function(e) {
+            // 得到x,y的坐标
+            var x = e.pageX;
+            var y = e.pageY;
+            // 将鼠标移动至图片中心，并且图片跟随鼠标移动
+            img.style.top = y - img.height / 2 + "px";
+            img.style.left = x - img.width / 2 + "px";
+        });
+        // console.dir(img);
+    </script>
+</body>
+
+</html>

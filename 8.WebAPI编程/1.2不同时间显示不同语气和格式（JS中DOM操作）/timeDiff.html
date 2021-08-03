@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>根据时间选择问候语和图片</title>
+</head>
+
+<body>
+    <img src="images/s.gif" alt="">
+    <p>上午好，好好写代码</p>
+    <script>
+        // 获取元素
+        var img1 = document.querySelector("img");
+        var p1 = document.querySelector("p");
+        // 获取时间
+        var time = new Date();
+        var h = time.getHours();
+        if (h < 12) {
+            img1.src = "images/s.gif";
+            p1.innerHTML = "上午好，好好写代码";
+        } else if (h < 18) {
+            img1.src = "images/x.gif";
+            p1.innerHTML = "下午好，好好写代码";
+        } else {
+            img1.src = "images/w.gif";
+            p1.innerHTML = "晚上好，好好写代码";
+        }
+    </script>
+</body>
+
+</html>

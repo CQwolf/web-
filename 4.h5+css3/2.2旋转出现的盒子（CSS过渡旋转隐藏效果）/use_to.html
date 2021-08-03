@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>显示出现隐藏</title>
+    <style type="text/css">
+        div {
+            position: relative;
+            float: left;
+            height: 200px;
+            width: 200px;
+            margin: 10px;
+            border: 1px solid red;
+            overflow: hidden;
+        }
+        
+        div::before {
+            position: absolute;
+            content: "效果出现";
+            height: 100%;
+            width: 100%;
+            text-align: center;
+            background-color: #f839;
+            transform: rotate(180deg);
+            transform-origin: 0 100%;
+            transition: all 0.5s;
+        }
+        
+        div:hover::before {
+            transform: rotate(0);
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+
+</html>

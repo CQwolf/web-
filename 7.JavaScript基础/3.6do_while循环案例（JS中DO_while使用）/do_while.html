@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DO_WHILE循环</title>
+    <script>
+        // 打印一个人的一生和统计数字
+        var i = 1;
+        var sum = 0;
+        do {
+            console.log('这个人今年' + i + '岁');
+            sum += i;
+            i++;
+        } while (i <= 100);
+        console.log('1-100总和为：' + sum);
+        //一直弹出你爱我吗
+        var message = '';
+        do {
+            message = prompt('你爱我吗');
+        } while (message != '我爱你');
+        altert('我也爱你呀！！');
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

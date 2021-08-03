@@ -1,0 +1,24 @@
+body {
+    background-color: pink;
+}
+
+div {
+    color: pink;
+    font-size: 14px;
+}
+
+p {
+    font-size: 14px;
+    width: 1.6rem;
+    height: 1.6rem;
+    font-size: 0px;
+}
+
+div:hover {
+    color: pink;
+}
+
+div::before {
+    content: "";
+    color: pink;
+}

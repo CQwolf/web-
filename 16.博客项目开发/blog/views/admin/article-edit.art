@@ -1,0 +1,116 @@
+<!-- 继承模板骨架文件 -->
+{{extend "./common/layout.art"}}
+
+{{block "main"}}
+	{{include "./common/header.art"}}
+    <!-- 主体内容 -->
+    <div class="content">
+        {{include "./common/aside.art"}}
+        <div class="main">
+            <!-- 分类标题 -->
+            
+            <div class="title">
+                <h4>
+                {{if article}}
+                    修改文章的_id：{{@article&&article._id}}
+                {{else}}
+                    发布文章
+                {{/if}}
+                </h4>
+            </div>
+            
+            <!-- /分类标题 -->
+            <!--
+                enctype 指定表单数据的编码类型
+                    application/x-www-form-urlencoded
+                        name=zhangsan&age=20
+                    multipart/form-data 将表单数据编码成二进制类型 即可提交文本，也可提交其他的数据
+            -->
+            <form class="form-container" method="post" action="{{link}}" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>标题</label>
+                    <input type="text" class="form-control" placeholder="请输入文章标题" name="title" value="{{article&&article.title}}">
+                </div>
+                <div class="form-group">
+                    <label>作者</label>
+                    <input type="text" class="form-control" readonly name="author" value="{{@article?article.author._id:userInfo._id}}">
+                </div>
+                <div class="form-group">
+                    <label>发布时间</label>
+                    <!--datetiame-local支持的格式为 yyyy-mm-ddTHH:MM:SS-->
+                    <input type="datetime-local" class="form-control" name="publishDate"
+                     value="{{article?dateformat(article.publishDate,"yyyy-mm-dd'T'HH:MM"):dateformat(nowDate,"yyyy-mm-dd'T'HH:MM")}}">
+                </div>
+                
+                <div class="form-group">
+                   <label for="exampleInputFile">文章封面{{if article}}（重新选择封面）{{/if}}</label>
+                   <input type="file" name="cover" id="file">
+                   <!--
+                   multiple是用于允许表单选择多个文件
+                   -->
+
+                   <!--用来预览上传的图片-->
+                   <div class="thumbnail-waper previewImg" style="display:{{article&&article.cover?"block":"none"}}">
+                       <i>
+                       {{if article}}
+                            以前的封面预览
+                       {{else}}
+                            选择的封面预览
+                       {{/if}}
+                       </i> <br>
+                       <img class="img-thumbnail" src="{{article&&article.cover}}" id="preview" width="720px">
+                   </div>
+                </div>
+                <div class="form-group">
+                    <label>内容</label>
+                    <textarea class="form-control" id="editor" name="content">{{article&&article.content}}</textarea>
+                </div>
+                <div class="buttons">
+                    <input type="submit" class="btn btn-primary" value="{{button}}">
+                </div>
+            </form>
+            
+        </div>
+    </div>
+    <!-- /主体内容 -->
+{{/block}}
+{{block "script"}}
+    <script src="/admin/lib/ckeditor5/ckeditor.js"></script>
+    <script type="text/javascript">
+    
+        let editor;
+
+        ClassicEditor
+                .create( document.querySelector('#editor'))
+                .then(newEditor => {
+                    editor = newEditor;
+                })
+                .catch( error => {
+                    console.error( error );
+                });
+
+        // 获取数据
+        // const editorData = editor.getData();
+
+        // 上传图片的预览功能
+        let file = document.querySelector("#file");
+        let preview = document.querySelector("#preview");
+        // 当文件上传完成时
+        file.onchange = function() {
+            // 1.创建文件读取对象
+            let reader = new FileReader();
+            // 用户的选择的文件列表
+            // 是一个数组
+            // console.log(this.files);
+            // 2.然后读取文件路径
+            reader.readAsDataURL(this.files[0]);
+            // 3.读取完成后，监听onload事件
+            reader.onload = function () {
+                // 文件选择完成后显示显示预览图
+                $(".previewImg").show();
+                // 将读取的目录结果给予预览的src，来显示文件封面
+                preview.src = reader.result;
+            }
+        }
+    </script>
+{{/block}}

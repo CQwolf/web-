@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>添加表格内容</title>
+    <style>
+        input,
+        button {
+            outline: none;
+        }
+        
+        button {
+            background: darkgray;
+            width: 60px;
+            height: 30px;
+            font-size: 14px;
+        }
+        
+        table {
+            border-collapse: collapse;
+            border: 1px solid darkgray;
+        }
+        
+        thead {
+            background: purple;
+        }
+        
+        tbody {
+            background: pink;
+        }
+        
+        td,
+        th {
+            border: 1px solid;
+            text-align: center;
+            margin: -1px 0 0 -1px;
+        }
+        
+        tr :nth-child(1) {
+            width: 80px;
+        }
+        
+        tr :nth-child(2) {
+            width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <span>请输入姓名：</span>
+    <input type="text"><br>
+    <span>请输入邮箱：</span>
+    <input type="text">
+    <br>
+    <button>添加</button>
+    <table cellspacing="0">
+        <thead id="th">
+            <tr>
+                <th>姓名</th>
+                <th>邮箱</th>
+            </tr>
+        </thead>
+        <tbody id="tb">
+
+        </tbody>
+    </table>
+    <script>
+        // 获取输入框的值
+        var ins = document.querySelectorAll("input");
+        var tb = document.querySelector("#tb");
+        var btn = document.querySelector("button");
+        btn.onclick = function() {
+            var trs = document.createElement("tr");
+            // 新创建的内容插入到首行
+            tb.insertBefore(trs, tb.children[0]);
+            for (var i = 0; i < ins.length; i++) {
+                var td = document.createElement("td");
+                // 得到输入框的值
+                td.innerHTML = ins[i].value;
+                trs.appendChild(td);
+            }
+        }
+    </script>
+</body>
+
+</html>

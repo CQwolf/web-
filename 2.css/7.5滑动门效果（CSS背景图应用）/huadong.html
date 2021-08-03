@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>滑动门</title>
+	<style type="text/css">
+		div {
+			width: 1000px;
+			height: 100px;
+			margin: 20px auto;
+			background-color: #3A3A3A;
+		}
+		a {
+			display: inline-block;
+			margin-top: 33px;
+			margin-left: 20px;
+			padding-left: 15px;
+			height: 33px;
+			line-height: 33px;
+			color: #fff;
+			background: url(images/to.png) no-repeat;
+			border-radius: 17px;
+		}
+		span {
+			display: inline-block;
+			height: 33px;
+			background: url(images/to.png) no-repeat right top;
+			padding-right: 15px;
+			border-radius: 17px;
+		}
+		a:hover span {
+			background: url(images/ao.png) right top;
+		}
+		a:hover {
+			background: url(images/ao.png);
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<a href="#"><span>首页</span></a>
+		<a href="#"><span>兴趣爱好</span></a>
+		<a href="#"><span>学习方向</span></a>
+		<a href="#"><span>投诉电话和联系方式</span></a>
+		<a href="#"><span>其他</span></a>
+	</div>
+</body>
+</html>

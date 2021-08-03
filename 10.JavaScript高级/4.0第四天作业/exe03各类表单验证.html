@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单验证</title>
+    <style>
+        .right {
+            color: green;
+        }
+        
+        .wrong {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ## 3 - 表单验证
+
+    - 题目描述
+    
+      将课堂中讲解的最后的表单验证案例完成一遍
+    
+    - 训练目标
+    
+      能够理解正则的匹配
+    
+    - 训练提示
+    
+      ```js
+      手机号验证:/^1[3|4|5|7|8][0-9]{9}$/
+      QQ号验证: /^[1-9]\d{4,}$/
+      昵称验证:/^[\u4e00-\u9fa5]{2,8}$/
+      密码验证:/^[a-zA-Z0-9_-]{6,16}$/
+      ```
+     -->
+
+    <label for="">手机号：</label><input type="text" class="phone"> <span></span> <br />
+    <label for="">QQ号：</label><input type="text" class="QQ"> <span></span><br />
+    <label for="">昵称：</label><input type="text" class="nc"> <span></span><br />
+    <label for="">密码：</label><input type="text" class="pwd"> <span></span>
+    <script>
+        // 获取元素
+        var phone = document.querySelector(".phone");
+        var QQ = document.querySelector(".QQ");
+        var nc = document.querySelector(".nc");
+        var pwd = document.querySelector(".pwd");
+        // 当数字匹配正确才进行正确提示信息，否则给出错误信息
+        // 手机号验证
+        var reg1 = /^1[3|4|5|7|8][0-9]{9}$/;
+        // QQ号验证
+        var reg2 = /^[1-9]\d{4,}$/;
+        // 昵称验证，仅仅支持2-8位的汉字
+        var reg3 = /^[\u4e00-\u9fa5]{2,8}$/;
+        // 密码验证
+        var reg4 = /^[a-zA-Z0-9_-]{6,16}$/;
+        // 封装函数进行调用修改
+        function checkFormat(ele, reg) {
+            // 当表单失去焦点时候判断
+            ele.onblur = function() {
+                if (reg.test(this.value)) {
+                    ele.nextElementSibling.className = "right";
+                    ele.nextElementSibling.innerHTML = "输入格式正确";
+                } else {
+                    ele.nextElementSibling.className = "wrong";
+                    ele.nextElementSibling.innerHTML = "输入格式错误";
+                }
+            }
+        }
+        // 调用
+        checkFormat(phone, reg1);
+        checkFormat(QQ, reg2);
+        checkFormat(nc, reg3);
+        checkFormat(pwd, reg4);
+    </script>
+</body>
+
+</html>

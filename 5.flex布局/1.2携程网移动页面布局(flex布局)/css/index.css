@@ -1,0 +1,369 @@
+body {
+    max-width: 540px;
+    min-width: 320px;
+    width: 100%;
+    margin: 0 auto;
+    font: normal 14px/1.5 Tahoma, "Lucida Grande", Verdana, "Microsoft Yahei", STXihei, hei;
+    color: #000;
+    background: #f2f2f2;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/*点击高亮我们需要清除清除  设置为transparent 完成透明*/
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/*在移动端浏览器默认的外观在iOS上加上这个属性才能给按钮和输入框自定义样式*/
+
+input {
+    -webkit-appearance: none;
+}
+
+
+/*禁用长按页面时的弹出菜单*/
+
+img,
+a {
+    -webkit-touch-callout: none;
+}
+
+ul,
+input {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+a {
+    color: #666;
+    text-decoration: none;
+}
+
+img {
+    vertical-align: middle;
+}
+
+input {
+    outline: none;
+}
+
+
+/* C3盒子模型 */
+
+div {
+    box-sizing: border-box;
+}
+
+
+/* 清除浮动 */
+
+.clearfix:after {
+    content: "";
+    display: block;
+    line-height: 0;
+    visibility: hidden;
+    height: 0;
+    clear: both;
+}
+
+
+/* 顶部固定导航栏部分 */
+
+.search {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    width: 100%;
+    min-width: 320px;
+    max-width: 540px;
+    height: 44px;
+    border: 1px solid #ccc;
+    border-width: 1px 0 1px 0;
+    background-color: #F6F6F6;
+}
+
+.search-btn {
+    position: relative;
+    flex: 1;
+}
+
+.search-btn::before {
+    position: absolute;
+    content: "";
+    top: 15px;
+    left: 12px;
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    background: url(../images/sprite.png) no-repeat;
+    background-position: -59px -279px;
+    background-size: 104px auto;
+}
+
+.search-btn input {
+    display: block;
+    margin: 9px auto;
+    padding-left: 25px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 97%;
+    height: 26px;
+    font-size: 12px;
+    color: #666;
+}
+
+.search-login {
+    width: 44px;
+    height: 44px;
+    text-align: center;
+}
+
+.login-icon {
+    display: block;
+    margin: 3px auto -3px;
+    width: 23px;
+    height: 23px;
+    background: url(../images/sprite.png) no-repeat;
+    background-position: -60px -194px;
+    background-size: 104px auto;
+}
+
+.search-login span {
+    font-size: 12px;
+    color: #2eaae0;
+}
+
+
+/* 焦点图 */
+
+.focus {
+    margin: 44px 0 5px 0;
+}
+
+.focus img {
+    width: 100%;
+}
+
+
+/* 局部导航栏 */
+
+.local-nav {
+    display: flex;
+    margin: 3px 4px;
+    height: 64px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.local-nav li {
+    flex: 1;
+    height: 64px;
+    text-align: center;
+    background-color: #FFFFFF;
+}
+
+span[class^="local-nav-icon"] {
+    display: block;
+    margin: 5px auto 0;
+    width: 32px;
+    height: 32px;
+    background: url(../images/localnav_bg.png) no-repeat;
+    background-position: 0 0;
+    background-size: 32px auto;
+}
+
+span.local-nav-icon2 {
+    background-position: 0 -32px;
+}
+
+span.local-nav-icon3 {
+    background-position: 0 -64px;
+}
+
+span.local-nav-icon4 {
+    background-position: 0 -96px;
+}
+
+span.local-nav-icon5 {
+    background-position: 0 -128px;
+}
+
+span.local-nav-text {
+    font-size: 12px;
+    color: #222;
+}
+
+
+/* 主导航栏 */
+
+nav {
+    margin: 3px 4px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.nav-common {
+    display: flex;
+    height: 88px;
+    background: -webkit-linear-gradient(left, #FA5C55, #FA974D);
+}
+
+.nav-common:nth-child(n+2) {
+    margin-top: 3px;
+}
+
+.nav-common:nth-child(2) {
+    background: -webkit-linear-gradient(left, #4B91ED, #53BBED);
+}
+
+.nav-common:nth-child(3) {
+    background: -webkit-linear-gradient(left, #35C3A8, #6BD45A);
+}
+
+.nav-items {
+    flex: 1;
+    display: flex;
+}
+
+.nav-items a {
+    flex: 1;
+    font-size: 14px;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    line-height: 44px;
+    color: #fff;
+}
+
+.nav-items:nth-child(1) a:nth-child(1) {
+    background: url("../images/hotel.png") no-repeat center bottom;
+    background-size: 121px auto;
+}
+
+.nav-items:nth-child(n+2) {
+    border-left: 1px solid #fff;
+    flex-direction: column;
+}
+
+.nav-items:nth-child(n+2) a:nth-child(1) {
+    border-bottom: 1px solid #fff;
+}
+
+
+/* 侧导航栏 */
+
+.subnav {
+    margin: 3px 4px;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    background-color: #fff;
+    overflow: hidden;
+    padding-top: 5px;
+}
+
+.subnav li {
+    flex: 20%;
+}
+
+.subnav li a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+li span[class^="subnav-icon"] {
+    width: 28px;
+    height: 28px;
+    margin: 4px 0;
+    background: url(../images/subnav-bg.png) no-repeat;
+    background-position: 0 0;
+    background-size: 28px auto;
+}
+
+
+/* 销售模块 */
+
+
+/* 头部 */
+
+.sales {
+    margin: 3px 4px;
+    background-color: #fff;
+    border-top: 1px solid #bbb;
+}
+
+.sales-head {
+    position: relative;
+    height: 44px;
+    border-bottom: 1px solid #ccc;
+}
+
+.sales-title {
+    position: relative;
+    text-indent: -9999px;
+    overflow: hidden;
+}
+
+.sales-title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 79px;
+    height: 15px;
+    background: url(../images/hot.png) no-repeat 0 -20px;
+    background-size: 79px auto;
+}
+
+.sales-more {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 5px;
+    padding: 3px 20px 3px 10px;
+    border-radius: 20px;
+    background: -webkit-linear-gradient(left, #FF5170, #FF6BC3);
+    color: #fff;
+}
+
+.sales-more::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 8px;
+    height: 8px;
+    border: 2px solid #fff;
+    border-width: 2px 2px 0 0;
+    transform: rotate(45deg)
+}
+
+
+/* 内容 */
+
+.row {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+}
+
+.row a {
+    flex: 1;
+    box-sizing: border-box;
+}
+
+.row a:nth-child(1) {
+    border-right: 1px solid #ccc;
+}
+
+.row a img {
+    width: 100%;
+}

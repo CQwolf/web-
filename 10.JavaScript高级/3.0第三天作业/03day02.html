@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>按键字体变化</title>
+    <style>
+        .to14 {
+            color: brown;
+            font-size: 14px;
+        }
+        
+        .to20 {
+            color: cadetblue;
+            font-size: 20px;
+        }
+        
+        .to40 {
+            color: coral;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ## 2 - 点击按钮改变页面上的文字大小
+
+    - 题目描述
+    
+      使用闭包实现点击按钮改变页面上的文字大小
+
+    - 训练目标
+    
+      能够理解闭包
+    
+    - 训练提示
+    
+      1. 结构中有三个按钮分别绑定点击事件
+      2. 点击事件触发一个函数 是修改p标签文本大小的
+      3. 使用闭包实现字体大小的设置 -->
+
+    <button>按键14</button>
+    <button>按键20</button>
+    <button>按键40</button>
+    <p>点击我变化字体大小变化</p>
+    <script>
+        // 获取元素
+        var buttons = document.querySelectorAll("button");
+        var tabs = ["to14", "to20", "to40"];
+        var p = document.querySelector("p");
+        // 利用立即执行函数实现绑定
+        for (var i = 0; i < buttons.length; i++) {
+            (function(i) {
+                buttons[i].onclick = function() {
+                    p.className = tabs[i];
+                }
+            })(i);
+        }
+        // 利用立即执行函数实现绑定,下面这种就不行，因为点击函数不能获取到for循环的i,里面为异步任务，外面为同步任务
+        // let同样可以实现闭包
+        // for (let i = 0; i < buttons.length; i++) {
+        //     buttons[i].onclick = function() {
+        //         p.className = tabs[i];
+        //         console.log(i);
+        //     }
+        // }
+    </script>
+</body>
+
+</html>

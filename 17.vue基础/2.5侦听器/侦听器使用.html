@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>侦听器使用</title>
+</head>
+
+<body>
+    <div id="app">
+        <span>名：</span> <input type="text" v-model="firstName"> <br />
+        <span>姓：</span> <input type="text" v-model="lastName"> <br />
+        <span>全名 ：</span> <span v-text="fullName"></span> <br />
+    </div>
+    <!-- 引入vue.js -->
+    <script src="../js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                firstName: "judy",
+                lastName: "happy",
+                fullName: "judy happy"
+            },
+            // 监听器一般用于异步操作等等，监听的属性变化必须是data里面有的
+            watch: {
+                // value是自己当前的表单里面的值
+                // 当属性变化时就会进行修改
+                firstName: function(val) {
+                    this.fullName = val + " " + this.lastName;
+                },
+                lastName: function(val) {
+                    this.fullName = this.firstName + " " + val;
+                },
+            }
+        });
+    </script>
+</body>
+
+</html>

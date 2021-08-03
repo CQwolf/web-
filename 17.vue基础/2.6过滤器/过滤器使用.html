@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>过滤器使用</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 输入字母，全转大写字母 -->
+        <span>请输入字母</span><input type="text" v-model="string">
+        <!-- 使用过滤器时，在后面加管道 -->
+        <!-- 过滤器表达式用于插值表达式和v-bind表达式中 -->
+        <p>{{string | upper}}</p>
+        <p :cl="string | upper"></p>
+        <!-- 求n的n次方 -->
+        <p>{{number | lower(number)}}</p>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        // 全局定义过滤器,一个参数处理方式
+        Vue.filter("upper", function(n) {
+            return n.toUpperCase();
+        })
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                string: "abc",
+                number: 12,
+            },
+            // 局部定义,多参数处理
+            filters: {
+                lower: function(n, n1) {
+                    return n ** n1;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

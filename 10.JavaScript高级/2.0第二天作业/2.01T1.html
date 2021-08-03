@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第二天作业题目一</title>
+</head>
+
+<body>
+    <!-- ## 1 - 创建一个构造函数并生成实例并打印出构造函数的原型与实例的原型
+
+- 题目描述
+
+  创建一个构造函数并生成实例并打印出构造函数的原型与实例的原型
+
+
+- 训练目标
+
+  能够理解实例对象的原型,构造函数的原型的关系
+
+- 训练提示
+
+  1. 创建构造函数
+  2. 通过new 创建出实例对象
+  3. 打印实例的原型和构造函数的原型,查看两者的关系 -->
+
+    <script>
+        // 创建一个构造函数
+        function Punch(name, power) {
+            this.name = name;
+            this.power = power;
+        }
+        Punch.prototype.ability = function() {
+            document.write("连续普通拳");
+        }
+        var punch = new Punch("琦玉", "99999");
+        // 打印两个原型所指向的东西
+        // 原型对象 prototype，和对象原型 __proto__指向相同的东西
+        console.log(punch.__proto__);
+        console.log(Punch.prototype);
+        // 打印两个指向的关系是否相同
+        console.log(punch.__proto__ === Punch.prototype);
+    </script>
+</body>
+
+</html>

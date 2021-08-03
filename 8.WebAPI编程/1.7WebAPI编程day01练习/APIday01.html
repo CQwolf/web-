@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebAPI第一天的练习</title>
+    <style type="text/css">
+        /* 全局样式 */
+        
+        ul,
+        li,
+        p {
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1 {
+            /* color: darkpink; */
+            font-size: 20px;
+        }
+        /* 题目一CSS: */
+        
+        input {
+            outline: none;
+            border-color: darkgray;
+            border: 1px solid darkgrey;
+            color: darkgray;
+        }
+        
+        button {
+            background: lightblue;
+            border: 0;
+            outline: none;
+        }
+        /* 题目二CSS: */
+        
+        #doClose {
+            position: relative;
+        }
+        
+        #doClose .ad {
+            width: 100%;
+        }
+        
+        #doClose .close {
+            position: absolute;
+            right: 0%;
+            top: 0%;
+        }
+        /* 题目三CSS: */
+        
+        .weibo {
+            font-size: 14px;
+            display: inline-block;
+            width: 80px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            text-decoration: none;
+            color: #4c4c4c;
+        }
+        
+        .listOn {
+            list-style-type: none;
+            display: none;
+        }
+        
+        .imgOfj {
+            display: inline-block;
+            width: 8px;
+            height: 5px;
+            margin: 0 0 0 5px;
+            overflow: hidden;
+            vertical-align: middle;
+            font-size: 14px;
+            line-height: 13px;
+            background: url(images/icon.png) 0 -977px no-repeat;
+        }
+        
+        .listOn li {
+            /* display: none; */
+            width: 78px;
+            height: 39px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 14px;
+            color: #4c4c4c;
+            border-width: 0 1px 1px 1px;
+            border-color: #FECC5B;
+            border-style: solid;
+            cursor: pointer;
+        }
+        
+        .listOn li,
+        .weibo {
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, .1);
+        }
+        
+        .otherList {
+            width: 85px;
+        }
+        
+        #Topweibo {
+            width: 85px;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+<!--题目一：
+    仿世纪佳缘网，显示和隐藏输入框中的提示内容，具体表现如下图：
+    1）输入框获得焦点，提示内容消失，边框变色
+    2）输入框失去焦点，如果内容为空，提示内容恢复，边框变色；如果内容不为空，只有边框变色 -->
+<h1>题目一：显示和隐藏输入框中的提示内容</h1>
+<input id="uesername" type="text" value="邮箱/ID/手机号">
+<button>登录</button>
+<br>
+<script>
+    var UserName = document.getElementById("uesername");
+    var btn = document.querySelector("button");
+    UserName.onfocus = function() {
+        if (this.value == "邮箱/ID/手机号") {
+            this.value = "";
+        }
+        this.style.borderColor = "red";
+    }
+    UserName.onblur = function() {
+        if (this.value == "") {
+            this.value = "邮箱/ID/手机号";
+        }
+        this.style.borderColor = "darkgray";
+    }
+    var flag = 1;
+    btn.onclick = function() {
+        if (flag == 0) {
+            this.style.backgroundColor = "lightgreen";
+            flag = 1;
+        } else {
+            this.style.backgroundColor = "lightgray";
+            flag = 0;
+        }
+
+    }
+</script>
+<!--题目二： 
+    仿京东网，单击关闭广告 -->
+<h1>题目2：仿京东网，单击关闭广告</h1>
+<div id="doClose">
+    <img src="images/luzhou.jpg" alt="京东广告" class="ad">
+    <img src="images/close.jpg" alt="图片关闭按钮" title="点击关闭广告" class="close">
+</div>
+<script>
+    var Gad = document.getElementById("doClose");
+    var Ad = document.querySelector(".ad");
+    var Close = document.querySelector(".close");
+    Close.onclick = function() {
+        // this.style.display = "none";
+        // Ad.style.display = "none";
+        Gad.style.display = "none";
+    }
+</script>
+<!--题目三：
+    仿新浪网，鼠标移入显示下拉菜单，鼠标移出隐藏下拉菜单 -->
+<h1>题目3：鼠标移入显示下拉菜单，鼠标移出隐藏下拉菜单</h1>
+<div id="Topweibo">
+    <a href="#" class="weibo"><i>微博</i><span class="imgOfj"></span></a>
+    <div class="otherList">
+        <ul class="listOn">
+            <li>私信</li>
+            <li>评论</li>
+            <li>@我</li>
+        </ul>
+    </div>
+</div>
+<script>
+    var Topweibo = document.getElementById("Topweibo");
+    var weibo = document.getElementsByClassName("weibo");
+    var listOn = document.getElementsByClassName("listOn");
+    var lis = listOn[0].getElementsByTagName("li");
+    Topweibo.onmouseover = function() {
+        listOn[0].style.display = "block";
+        weibo[0].style.backgroundColor = "#ccc";
+    }
+    Topweibo.onmouseout = function() {
+        listOn[0].style.display = "none";
+        weibo[0].style.backgroundColor = "";
+    }
+    weibo[0].onmouseover = function() {
+        this.style.color = "#ff8400";
+
+    }
+    weibo[0].onmouseout = function() {
+        this.style.color = "#4c4c4c";
+
+
+    }
+    for (var i = 0; i < lis.length; i++) {
+        lis[i].onmouseover = function() {
+            this.style.color = '#ff8400';
+            this.style.backgroundColor = '#fff5da';
+        }
+        lis[i].onmouseout = function() {
+            this.style.color = '#4c4c4c';
+            this.style.backgroundColor = '';
+        }
+    }
+</script>
+<!--题目四：
+    单击按钮，控制网页开关灯 -->
+<h1>题目四：单击按钮，控制网页开关灯</h1>
+<button id="bt1">开关灯</button>
+<button id="bt2">开灯</button>
+<button id="bt3">关灯</button>
+<script>
+    var bt1 = document.getElementById("bt1");
+    var bt2 = document.getElementById("bt2");
+    var bt3 = document.getElementById("bt3");
+    var all = document.body;
+    var i = 0;
+    bt1.onclick = function() {
+        if (i == 0) {
+            all.style.backgroundColor = "black";
+            this.style.backgroundColor = "";
+            i = 1;
+        } else {
+            all.style.backgroundColor = "";
+            this.style.backgroundColor = "green";
+            i = 0;
+        }
+    }
+    bt2.onclick = function() {
+        all.style.backgroundColor = "";
+        this.style.backgroundColor = "red";
+        bt3.style.backgroundColor = "";
+        i = 0;
+    }
+    bt3.onclick = function() {
+        all.style.backgroundColor = "black";
+        this.style.backgroundColor = "red";
+        bt2.style.backgroundColor = "";
+        i = 1;
+    }
+</script>
+
+</html>

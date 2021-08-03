@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // 测试从find()方法返回的对象
+        // 若修改其中的对象的书香值，会导致原数组对象的属性值改变
+        const message = [{
+            name: "大哥",
+            age: 20
+        }, {
+            name: "小哥",
+            age: 21,
+        }, {
+            name: "打野",
+            age: 22,
+        }];
+
+        const m1 = message.find(item => item.age = 21);
+        console.log("返回对象未修改前");
+        console.log(m1);
+        console.log(message);
+        m1.age = 89;
+        console.log("返回对象未修改后");
+        console.log(m1);
+        console.log(message);
+    </script>
+</body>
+
+</html>
