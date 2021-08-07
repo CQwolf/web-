@@ -163,6 +163,8 @@
                 // 表单输入的name和id
                 name: "",
                 id: "",
+                // id重复
+                idFlag: false,
                 // 基础数据
                 books: []
             },
@@ -171,16 +173,23 @@
                     // 提交数据
                     if (!this.flag) {
                         if (this.id == "" || this.name == "") {
-                            alert("添加的值不能为空");
+                            // alert("添加的值不能为空");
+                            this.submitFlag = true;
                         } else {
-                            // 将表单输入的值添加至数据books中
-                            // 创建一个对象
-                            var book = {};
-                            book.id = this.id;
-                            book.name = this.name;
-                            book.date = new Date();
-                            // 将数据push到数组中
-                            this.books.push(book);
+                            if (this.idFlag) {
+                                this.id = "";
+                                this.name = "";
+                                return alert("id值重复,提交失败")
+                            } else {
+                                // 将表单输入的值添加至数据books中
+                                // 创建一个对象
+                                var book = {};
+                                book.id = this.id;
+                                book.name = this.name;
+                                book.date = new Date();
+                                // 将数据push到数组中
+                                this.books.push(book);
+                            }
                         }
                     }
                     //  修改数据
@@ -231,17 +240,18 @@
             watch: {
                 // 表单值为数据中重复时，不能提交
                 id: function(val) {
-                    var flag = this.books.some(function(item) {
+                    let flag = this.books.some(function(item) {
                         return val == item.id;
                     });
                     if (flag) {
-                        this.submitFlag = true;
+                        this.idFlag = true;
                     } else {
-                        this.submitFlag = false;
+                        this.idFlag = false;
                     }
                 },
+                // 修改时数据的监听
                 name: function(val) {
-                    var flag = this.books.some(function(item) {
+                    let flag = this.books.some(function(item) {
                         return val == item.name;
                     });
                     if (flag) {
@@ -259,6 +269,10 @@
             },
             // 通过声明周期函数挂载
             mounted: function() {
+                if (this.id == "" || this.name == "") {
+                    // alert("添加的值不能为空");
+                    this.submitFlag = true;
+                }
                 var data = [{
                     id: 1,
                     name: '三国演义',
