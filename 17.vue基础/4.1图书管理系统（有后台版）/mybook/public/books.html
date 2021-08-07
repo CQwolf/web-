@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图书管理系统</title>
+    <style type="text/css">
+        input {
+            outline: none;
+        }
+        
+        .grid {
+            margin: auto;
+            width: 530px;
+            text-align: center;
+        }
+        
+        .grid table {
+            border-top: 1px solid #C2D89A;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .grid th,
+        td {
+            padding: 10;
+            border: 1px dashed #F3DCAB;
+            height: 35px;
+            line-height: 35px;
+        }
+        
+        .grid th {
+            background-color: #F3DCAB;
+        }
+        
+        .grid .book {
+            padding-bottom: 10px;
+            padding-top: 5px;
+            background-color: #F3DCAB;
+        }
+        
+        .grid .total {
+            height: 30px;
+            line-height: 30px;
+            background-color: #F3DCAB;
+            border-top: 1px solid #C2D89A;
+        }
+        
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 第一步声明式渲染页面数据 -->
+    <div id="app">
+        <div class="grid">
+            <div>
+                <h1>图书管理</h1>
+                <div class="book">
+                    <div>
+                        <label for="id">
+                      编号：
+                    </label>
+                        <!-- 文档一打开就聚焦到这个表单 -->
+                        <input type="text" id="id" v-model.trim="id" :disabled="true" v-focus>
+                        <label for="name">
+                      名称：
+                    </label>
+                        <input type="text" id="name" v-model.trim="name">
+                        <button @click="handle" :disabled="submitFlag">提交</button>
+                    </div>
+                </div>
+            </div>
+            <div class="total">
+                <span>图书总数：</span>
+                <span v-cloak>{{total}}</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th>名称</th>
+                        <th>时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 利用v-for循环遍历 -->
+                    <tr :key="item.id" v-for="item in books">
+                        <td v-cloak>{{item.id}}</td>
+                        <td v-cloak>{{item.name}}</td>
+                        <td v-cloak>{{item.date | format("yyyy-MM-dd hh:mm:ss")}}</td>
+                        <td>
+                            <!-- .prevent阻止默认行为 使用href="javascript:;"效果相同 -->
+                            <a href="" @click.prevent="update(item.id)">修改</a>
+                            <span>|</span>
+                            <a href="" @click.prevent="del(item.id)">删除</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- 引入vue.js -->
+    <script src="/js/vue.js"></script>
+    <!-- 引入axios.js实现异步数据刷新 -->
+    <script src="/js/axios.js"></script>
+    <script>
+        // 配置axios的基准路由
+        axios.default.BaseURL = "http://localhost:3000/";
+        // 处理axios返回的数据结果
+        axios.interceptors.response.use(function(res) {
+            // 正确就直接返回数据
+            return res.data;
+        }, function(error) {
+            console.log(error);
+        })
+
+        // focus为自定义的指令名，使用时需要v-focus
+        Vue.directive("focus", {
+            // inserted:为属性插入dom里面时调用函数
+            inserted: function(el) {
+                // el参数为固定，表示绑定的dom元素
+                el.focus();
+            }
+        });
+        Vue.filter('format', function(value, arg) {
+            function dateFormat(date, format) {
+                if (typeof date === "string") {
+                    var mts = date.match(/(\/Date\((\d+)\)\/)/);
+                    if (mts && mts.length >= 3) {
+                        date = parseInt(mts[2]);
+                    }
+                }
+                date = new Date(date);
+                if (!date || date.toUTCString() == "Invalid Date") {
+                    return "";
+                }
+                var map = {
+                    "M": date.getMonth() + 1, //月份 
+                    "d": date.getDate(), //日 
+                    "h": date.getHours(), //小时 
+                    "m": date.getMinutes(), //分 
+                    "s": date.getSeconds(), //秒 
+                    "q": Math.floor((date.getMonth() + 3) / 3), //季度 
+                    "S": date.getMilliseconds() //毫秒 
+                };
+                format = format.replace(/([yMdhmsqS])+/g, function(all, t) {
+                    var v = map[t];
+                    if (v !== undefined) {
+                        if (all.length > 1) {
+                            v = '0' + v;
+                            v = v.substr(v.length - 2);
+                        }
+                        return v;
+                    } else if (t === 'y') {
+                        return (date.getFullYear() + '').substr(4 - all.length);
+                    }
+                    return all;
+                });
+                return format;
+            }
+            return dateFormat(value, arg);
+        })
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                // 提交表单禁用
+                submitFlag: false,
+                // 提交或者修改数据中心的禁用id的表单flag值
+                flag: false,
+                // 表单输入的name和id
+                name: "",
+                id: "",
+                // 基础数据
+                books: []
+            },
+            methods: {
+                handle: async function() {
+                    // 提交数据
+                    if (!this.flag) {
+                        if (this.name == "") {
+                            this.submitFlag = true;
+                        } else {
+                            const ret = await axios.post("books", {
+                                name: this.name
+                            });
+                            if (ret.status == 200) {
+                                // 提交成功，调用数据刷新页面
+                                this.queryData();
+                            } else {
+                                alert("添加失败")
+                            }
+                        }
+                    }
+                    //  修改数据
+                    else {
+                        const ret = await axios.put("books/" + this.id, {
+                            name: this.name
+                        });
+                        if (ret.status == 200) {
+                            // 修改成功，调用数据刷新页面
+                            this.queryData();
+                        } else {
+                            alert("修改失败")
+                        }
+                        // 修改完了以后要放开锁定让表单能够提交数据
+                        this.flag = false;
+                    }
+                    // 添加或者修改后，再把表单值给置空
+                    this.id = "";
+                    this.name = "";
+                },
+                // 更新数据
+                update: async function(id) {
+                    // 同时禁止id表单的修改和数据提交
+                    this.flag = true;
+                    const book = await axios.get("books/" + id);
+                    this.id = book.id;
+                    this.name = book.name;
+                },
+                // 删除数据
+                del: async function(id) {
+                    const ret = await axios.delete("books/" + id);
+                    if (ret.status == 200) {
+                        // 删除成功，调用数据刷新页面
+                        this.queryData();
+                    } else {
+                        alert("删除失败")
+                    }
+                },
+                // 从服务器端获取页面的所有数据
+                queryData: async function() {
+                    this.books = await axios.get("books");
+                }
+            },
+            watch: {
+                // 修改时数据的监听
+                name: async function(val) {
+                    const flag = await axios.get("books/book/" + val);
+                    if (flag.status == 1) {
+                        this.submitFlag = true;
+                    } else {
+                        this.submitFlag = false;
+                    }
+                }
+            },
+            // 计算图书总数
+            computed: {
+                total: function() {
+                    return this.books.length;
+                }
+            },
+            // 通过声明周期函数挂载
+            mounted: function() {
+                // 调用渲染的数据
+                this.queryData();
+            },
+        });
+    </script>
+</body>
+
+</html>
