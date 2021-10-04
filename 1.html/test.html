@@ -12,6 +12,14 @@
         p {
             color: black;
         }
+        
+         ::placeholder {
+            color: red;
+        }
+        
+         ::-ms-input-placeholder {
+            color: green;
+        }
     </style>
 </head>
 
@@ -34,7 +42,7 @@
     <h1>这个标题是绿色的</h1>
     <p>这个段落是黑色的。</p>
     <p><b>注意:</b> 只有 Firefox属性支持 scoped 属性 。</p>
-
+    <input type="text" placeholder="测试">
 </body>
 
 </html>

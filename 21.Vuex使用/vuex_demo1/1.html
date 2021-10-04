@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //       const sortArrayB = [
+      //     { id: '100010', age: 13 },
+      //     { id: '100011', age: 24 },
+      //     { id: '100023', age: 8 },
+      //     { id: '110010', age: 19 },
+      //     { id: '110410', age: 55 },
+      //     { id: '100333', age: 43 },
+      //     { id: '100882', age: 45 },
+      //     { id: '100001', age: 89 }
+      // ]
+      //       sortArrayB.sort(function (a, b) {
+      //         return a.age - b.age;
+      //       });
+      //       console.log(sortArrayB);
+      //   var foo = "Hello";
+      //   (function () {
+      //     var bar = " World";
+      //     alert(foo + bar);
+      //   })();
+      //   alert(foo + bar);
+      //   addEventListener
+      //   ins
+      const arr = [
+        { id: 1, name: "1" },
+        { id: 2, name: "1-1", parentId: 1 },
+        { id: 3, name: "1-1-1", parentId: 2 },
+        { id: 4, name: "1-2", parentId: 1 },
+        { id: 5, name: "1-2-2", parentId: 4 },
+        { id: 6, name: "1-1-1-1", parentId: 3 },
+        { id: 7, name: "2" },
+      ];
+      function transferDataToTree(data) {
+        data.forEach((item, i, arr) => {
+          arr[i].children = [];
+          if (!item.parentId) {
+            return;
+          }
+          arr[item.parentId - 1].children.push(item);
+        });
+        data = data.filter((item) => !item.parentId);
+        return data;
+      }
+      console.log(transferDataToTree(arr));
+    </script>
+  </body>
+</html>

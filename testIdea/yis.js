@@ -1,0 +1,11 @@
+console.log(null == undefined);
+console.log([] == false);
+console.log([] == 0);
+console.log({} == true);
+console.log({} == 1);
+console.log("" == 0);
+console.log("" == false);
+console.log(NaN == NaN);
+console.log([] == null);
+console.log({} == null);
+console.log(undefined == undefined);

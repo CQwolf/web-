@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>画图</title>
+  </head>
+  <body>
+    <div>画图</div>
+    <canvas
+      id="myCanvas"
+      width="800px"
+      height="800px"
+      style="border: 1px solid #ccc"
+    ></canvas>
+    <script>
+      // 获取指定canvas对象
+      const myCanvas = document.getElementById("myCanvas");
+      // 获取绘图环境
+      const myContext = myCanvas.getContext("2d");
+      // 矩形
+      myContext.fillStyle = "black";
+      myContext.fillRect(20, 10, 150, 100);
+      // 绘制边框
+      myContext.strokeStyle = "#f00";
+      myContext.lineWidth = 8;
+      // 执行绘制边框
+      myContext.strokeRect(20, 10, 150, 100);
+      // 圆形
+      // 开始路径
+      myContext.beginPath();
+      myContext.arc(300, 300, 50, 0, Math.PI * 2, true);
+      myContext.closePath();
+      myContext.fillStyle = "green";
+      myContext.fill();
+      // 绘制边框
+      myContext.strokeStyle = "rgba(0, 255, 0, .5)";
+      myContext.lineWidth = 8;
+      myContext.stroke();
+
+      // 绘制直线
+      myContext.fillStyle = "yellow";
+      myContext.strokeStyle = "rgba(0, 255, 0, .5)";
+      myContext.moveTo(12, 18);
+      myContext.lineTo(234, 27);
+      myContext.lineTo(23, 345);
+      myContext.lineTo(234, 567);
+      myContext.lineTo(236, 456);
+      myContext.lineTo(447, 655);
+      myContext.lineTo(222, 444);
+      myContext.lineTo(123, 567);
+      myContext.lineTo(342, 675);
+      myContext.lineTo(234, 12);
+      myContext.lineTo(123, 432);
+      myContext.lineWidth = 2;
+      myContext.stroke();
+
+      //   绘制文本
+      myContext.strokeStyle = "red";
+      myContext.font = "24px 黑体";
+      myContext.textAlign = "center";
+      myContext.strokeText("第一次绘画", 344, 122);
+
+      //   绘制彩色文本
+      const grad = myContext.createLinearGradient(233, 233, 255, 233);
+      //   渐变颜色设置
+      grad.addColorStop(0, "#000");
+      grad.addColorStop(0.5, "#ccc");
+      grad.addColorStop(0.8, "#ccc");
+      grad.addColorStop(0.8, "red");
+      myContext.strokeStyle = grad;
+      myContext.font = "24px 黑体";
+      myContext.textAlign = "start";
+      myContext.strokeText("第一次绘画", 233, 233);
+    </script>
+  </body>
+</html>
