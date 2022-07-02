@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .prev {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            width: 600px;
+            height: 600px;
+        }
+
+        .prev .prevImg {
+            width: 100%;
+        }
+
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        li {
+            float: left;
+            width: 210px;
+            cursor: pointer;
+        }
+
+        .imgList {
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 需要展示的图片 -->
+    <div class="prev">
+        <img src="./img/1.jpg" alt="预览图" class="prevImg" id="prevImg" />
+    </div>
+
+    <!-- 点击需要展示的图片 -->
+    <ul id="clickImg">
+        <li><img src="./img/1.jpg" alt="" class="imgList"></li>
+        <li><img src="./img/2.jpg" alt="" class="imgList"></li>
+        <li><img src="./img/3.jpg" alt="" class="imgList"></li>
+        <li><img src="./img/4.jpg" alt="" class="imgList"></li>
+    </ul>
+
+    <script>
+        var prevImg = document.getElementById("prevImg");
+        var clickImgs = document.getElementsByClassName("imgList")
+        for (var i = 0; i < clickImgs.length; i++) {
+            clickImgs[i].addEventListener("click", function () {
+                prevImg.src = this.src
+                console.log(prevImg.src)
+                console.log(111)
+            })
+        }
+    </script>
+</body>
+
+</html>

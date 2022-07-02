@@ -5,15 +5,15 @@
   ],
   "window":{
     "backgroundTextStyle":"dark",
-    "navigationBarBackgroundColor": "#eee",
+    "navigationBarBackgroundColor": "#cce",
     "navigationBarTitleText": "第一个小程序",
     "navigationBarTextStyle":"black",
-    "backgroundColor": "#ff0",
+    "backgroundColor": "#f00",
     "enablePullDownRefresh": true
   },
   "tabBar": {
     "color": "black",
-    "selectedColor": "#f00",
+    "selectedColor": "#219bf3",
     "list": [
       {
         "pagePath": "pages/index/index",

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object方法使用</title>
+</head>
+
+<body>
+    <script>
+        let person = {
+            name: "嘟嘟",
+            sex: "男",
+        };
+        var number = 18;
+        // 传入三个参数， 第一个是对象， 第二个是需要操作的属性值， 第三个是属性的操作为对象，
+        Object.defineProperty(person, "age", {
+            // value: number, //如果对象中不存在指定的属性，Object.defineProperty() 会创建这个属性。当描述符中省略某些字段时，这些字段将使用它们的默认值,默认值为undefined。
+            // enumerable: true, //当 writable 属性设置为 false 时，该属性被称为“不可写的”。它不能被重新赋值。
+            // writable: true, //enumerable 定义了对象的属性是否可以在 for...in 循环和 Object.keys() 中被枚举。
+            // configurable: true, //configurable 特性表示对象的属性是否可以被删除
+
+            // 还有get和set方法
+            set(value) {
+                number = value;
+            },
+            get() {
+                return number;
+            },
+        });
+    </script>
+</body>
+
+</html>

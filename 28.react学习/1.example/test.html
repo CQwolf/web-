@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 1920px;
+            height: 50px;
+            background: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+
+    </div>
+    <script>
+        console.log(window.devicePixelRatio, "高分屏");
+        var devicePixelRatio = window.devicePixelRatio;
+        // this.scale = window.innerWidth/window.screen.width/window.devicePixelRatio;
+        this.scale = window.innerWidth / 1920;
+        // console.log(this.scale, window.innerWidth, "缩放比例和宽");
+        // this.margintop = (window.innerHeight * (this.scale - 1)) / 2;
+        // document.body.style.zoom
+        console.log(document.body.style.zoom, "zoom")
+        document.body.style.zoom = scale
+        console.log(document.body.style.zoom, "zoom")
+        // if (devicePixelRatio == 1) {
+        //     document.body.style.zoom = scale
+        // } else if (devicePixelRatio == 1.25) {
+        //     //   this.margintop = -100
+        // } else if (devicePixelRatio == 1.5) {
+        //     //   this.margintop = -136
+        // } else if (devicePixelRatio == 1.75) {
+        //     //   this.margintop = -146
+        // } else if (devicePixelRatio == 2) {
+        //     //   this.margintop = -140
+        // } else if (devicePixelRatio == 2.25) {
+        //     //   this.margintop = -122
+        // }
+    // this.handleScreen();
+    </script>
+</body>
+
+</html>

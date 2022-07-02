@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello World</title>
+    <style>
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            width: 230px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            background-color: rgb(107, 106, 29);
+            border-radius: 40px;
+            text-align: center;
+        }
+        
+        .red {
+            color: red;
+        }
+    </style>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="h1">
+        <h1>Hello World</h1>
+        <!-- onselectstart="return false;"
+            去除文字选中的状态
+         -->
+        <h2 @click="clickChangeColor" :class="toggleColor" onselectstart="return false;">
+            {{ msg }}
+        </h2>
+    </div>
+    <script>
+        // 设置为 false 以阻止 vue 在启动时生成生产提示。
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+            // el: "#h1",
+            data: function() {
+                return {
+                    msg: "Hello World",
+                    toggleColor: "red",
+                    count: 1,
+                };
+            },
+            methods: {
+                // 切换背景按钮颜色
+                clickChangeColor() {
+                    if (this.count % 2 == 0) {
+                        this.msg = "Hello 小全";
+                        this.toggleColor = "";
+                    } else {
+                        this.msg = "Hello World";
+                        this.toggleColor = "red";
+                    }
+                    this.count++;
+                    if (this.count == 200) {
+                        this.count = 0;
+                    }
+                },
+            },
+        });
+        // 挂载一个容器
+        // 效果与el: "#h1" 相同
+        vm.$mount("#h1");
+    </script>
+</body>
+
+</html>

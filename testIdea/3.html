@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+<div id="dis"></div>
+
+<body>
+    <script>
+        /**
+         * initialize your data structure here.
+         */
+        var MinStack = function() {
+            this.queue = [];
+        };
+
+        /**
+         * @param {number} x
+         * @return {void}
+         */
+        MinStack.prototype.push = function(x) {
+            this.queue.push(x);
+        };
+
+        /**
+         * @return {void}
+         */
+        MinStack.prototype.pop = function() {
+            if (this.queue.length == 0) {
+                return null;
+            }
+            this.queue.pop();
+        };
+
+        /**
+         * @return {number}
+         */
+        MinStack.prototype.top = function() {
+            if (this.queue.length == 0) {
+                return null;
+            }
+            return this.queue[this.queue.length - 1];
+        };
+
+        /**
+         * @return {number}
+         */
+        MinStack.prototype.min = function() {
+            // 通过math函数改变指向得到数组的最小值
+            let min = Math.min.apply(this, this.queue);
+            if (this.queue.length == 0) {
+                return null;
+            }
+            // for(let key of this.queue){
+            //     if(min >= key){
+            //         min = key
+            //     }
+            // }
+            return min;
+        };
+
+        var fDiv = document.getElementById("dis");
+        /**
+         * Your MinStack object will be instantiated and called as such:
+         * var obj = new MinStack()
+         * obj.push(x)
+         * obj.pop()
+         * var param_3 = obj.top()
+         * var param_4 = obj.min()
+         */
+        var p = document.createElement("p");
+        p.innerHTML = " ";
+        var obj = new MinStack();
+        p.innerHTML += obj.queue.toString() + " ";
+        obj.push(-2);
+        p.innerHTML += obj.queue.toString() + " ";
+        obj.push(0);
+        p.innerHTML += obj.queue.toString() + " ";
+        obj.push(-3);
+        p.innerHTML += obj.queue.toString() + " ";
+        obj.min();
+        p.innerHTML += obj.queue.toString() + " ";
+        obj.pop();
+        p.innerHTML += obj.queue.toString() + " ";
+        obj.top();
+        p.innerHTML += obj.queue.toString() + " ";
+        obj.min();
+        p.innerHTML += obj.queue.toString() + " ";
+        fDiv.appendChild(p);
+    </script>
+</body>
+
+</html>
