@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=scr, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function git(...args) {
+            console.log(args); //["Q", "B", "C", "D", "E", "F", "G"]
+            console.log(arguments) // 对象，伪数组，长度为1
+        }
+        let ARG = ["Q", "B", "C", "D", "E", "F", "G"]
+        git("Q", "B", "C", "D", "E", "F", "G")
+
+        // function git() {
+        //     console.log(arguments) // 对象，伪数组，长度为7
+
+        // }
+        // let ARG = ["Q", "B", "C", "D", "E", "F", "G"]
+        // git(...ARG)
+
+        // 数组连接和拷贝（浅拷贝）
+    </script>
+</body>
+
+</html>

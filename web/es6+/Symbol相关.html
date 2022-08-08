@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 每一个symbol唯一
+        let a = Symbol("aaaa")
+        let b = Symbol("aaaa")
+
+        console.log(a == b) // false
+
+        // 因为每次会查看是否全局注册了本描述的Symbol
+        let c = Symbol.for("bbbb")
+        let d = Symbol.for("bbbb")
+        console.log(c == d) // true
+
+
+        // 还可以为其他对象添加唯一的方法，即使这个方法在对象中存在
+
+        const aaa = {
+            up() {
+                console.log("aaa.up")
+            },
+            down() { }
+        }
+
+        const methods = {
+            up: Symbol(),
+            down: Symbol()
+        }
+
+        aaa[methods.up] = function () {
+            console.log('symbol up')
+        }
+        console.log(aaa)
+    </script>
+</body>
+
+</html>

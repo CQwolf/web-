@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 生成器声明需要带一个*
+        // 属于异步的处理方案
+        // yeild 块分割各个代码块执行，通过iterator的next方法来一次执行
+        // function* gen() {
+        //     console.log("第一块")
+
+        //     yield "111"
+        //     console.log("第二块")
+        //     yield "2222"
+        //     console.log("第三块")
+
+        // }
+
+        // const iterator = gen()
+        // // iterator.next()
+        // // iterator.next()
+        // // iterator.next()
+
+
+        // for (let v of iterator) {
+        //     console.log(v)
+        //     // 第一块
+        //     //111
+        //     //第二块
+        //     //2222
+        //     //第三块
+        // }
+
+        // function* gen(arg) {
+        //     console.log(arg) // arrts
+        //     console.log("第一块")
+
+        //     let a = yield "111"
+        //     console.log(a) // BBB
+        //     console.log("第二块")
+        //     let b = yield "2222"
+        //     console.log(b) // CCC
+
+        //     console.log("第三块")
+
+        // }
+
+        // const iterator = gen("agrts")
+        // console.log(iterator.next())
+        // console.log(iterator.next("BBB"))
+        // console.log(iterator.next("CCC"))
+
+
+
+
+        // 回调函数
+
+        // function back(rollback) {
+        //     let a = "111"
+        //     rollback(a)
+        // }
+
+        // function rollback(a) {
+        //     console.log(a)
+        // }
+
+        // back(rollback)
+
+
+        // 用生成器使得异步代码同步化，去除回调地狱
+
+        function task1() {
+            setTimeout(() => {
+                let data = "第一次任务"
+                iterator.next(data)
+            }, 1000)
+        }
+
+        function task2() {
+            setTimeout(() => {
+                let data = "第二次任务"
+                iterator.next(data)
+            }, 3000)
+        }
+        function task3() {
+            setTimeout(() => {
+                let data = "第三次任务"
+                iterator.next(data)
+
+            }, 4000)
+        }
+
+        function* gen() {
+            let r1 = yield task2();
+            console.log(r1);
+            let r2 = yield task1()
+            console.log(r2);
+            let r3 = yield task3()
+            console.log(r3);
+        }
+
+        let iterator = gen()
+        iterator.next()
+    </script>
+</body>
+
+</html>

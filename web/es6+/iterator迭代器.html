@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // for in 遍历对象的是可枚举的键名    包括它的自己和原型链上的可枚举属性
+        // 总之，for...in 循环主要是为了遍历对象而生，不适用于遍历数组
+
+
+        // for of 遍历的是可以iterator的键值
+        // for...of 循环可以用来遍历数组、类数组对象，字符串、Set、Map 以及 Generator 对象
+
+        // 给对象添加iterator使其可以用for of遍历
+
+        const gh = {
+            name: '啦啦啦啦',
+            status: [
+                "111",
+                "222",
+                "333",
+                "444"
+            ],
+            [Symbol.iterator]() {
+                let index = 0;
+                return {
+                    next: () => {
+                        let result = {
+                            value: undefined,
+                            done: true
+                        }
+                        if (index < this.status.length) {
+                            result = {
+                                value: this.status[index],
+                                done: false
+                            }
+                            index++;
+                        }
+                        return result
+                    }
+                }
+            }
+        }
+
+        for (let v of gh) {
+            console.log(v)
+        }
+
+    </script>
+</body>
+
+</html>
